@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">First test</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="platform_arrays">
+        <item>Steam</item>
+        <item>Xbox Live</item>
+        <item>Playstation Network</item>
+        <item>BattleNet</item>
+        <item>Nintendo</item>
+    </string-array>
 </resources>
