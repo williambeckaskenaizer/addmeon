@@ -8,13 +8,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
-
+import android.widget.TextView;
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.widget.ImageView;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
-    @Override
+
+        @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -27,15 +35,23 @@ public class MainActivity extends AppCompatActivity {
         textView.setText(message);
     }
 
-    public void buttonOnClick(View view){
-        Button button = (Button) view;
-        ((Button) view).setText("clicked");
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+    public void initialLogin(View view){
+        setContentView(R.layout.initial_login_2);
+//        Button button = (Button) view;
+//        ((Button) view).setText("clicked");
+//        Intent intent = new Intent(this, DisplayMessageActivity.class);
+//        EditText editText = (EditText) findViewById(R.id.editText);
+//        String message = editText.getText().toString();
+//        intent.putExtra(EXTRA_MESSAGE, message);
+//        startActivity(intent);
 
     }
+    public void initialLogin2(View view){
+        setContentView(R.layout.initial_login_3);
+    }
+    public void homeScreen(View view){
+        setContentView(R.layout.home_screen);
+    }
+
 
 }
