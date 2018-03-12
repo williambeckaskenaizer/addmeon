@@ -55,4 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void buttonOnClickLog3(View view){
+        setContentView(R.layout.home_screen);
+        /*Button button = (Button) view;
+        ((Button) view).setText("clicked");
+        //Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        //startActivity(intent);*/
+
+    }
+
 }
