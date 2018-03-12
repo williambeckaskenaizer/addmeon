@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.TextView;
 
+import org.w3c.dom.Text;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+
+    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +27,31 @@ public class MainActivity extends AppCompatActivity {
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
         // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView);
+        textView = findViewById(R.id.textView);
         textView.setText(message);
     }
 
-    public void buttonOnClick(View view){
-        Button button = (Button) view;
+    public void buttonOnClickLog1(View view){
+        setContentView(R.layout.initial_login_2);
+        /*Button button = (Button) view;
         ((Button) view).setText("clicked");
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
+        //Intent intent = new Intent(this, DisplayMessageActivity.class);
         EditText editText = (EditText) findViewById(R.id.editText);
         String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        //startActivity(intent);*/
+
+    }
+
+    public void buttonOnClickLog2(View view){
+        setContentView(R.layout.initial_login_3);
+        /*Button button = (Button) view;
+        ((Button) view).setText("clicked");
+        //Intent intent = new Intent(this, DisplayMessageActivity.class);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        String message = editText.getText().toString();
+        //intent.putExtra(EXTRA_MESSAGE, message);
+        //startActivity(intent);*/
 
     }
 
