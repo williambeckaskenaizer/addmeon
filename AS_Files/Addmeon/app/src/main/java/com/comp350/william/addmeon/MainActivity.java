@@ -47,10 +47,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void initialLogin2(View view){
+
         setContentView(R.layout.initial_login_3);
     }
     public void homeScreen(View view){
+
         setContentView(R.layout.home_screen);
+    }
+
+    public void addAccount(View view){
+        setContentView(R.layout.add_account);
     }
 
 
