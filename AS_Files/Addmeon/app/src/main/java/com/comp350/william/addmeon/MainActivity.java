@@ -1,13 +1,14 @@
 package com.comp350.william.addmeon;
 
 
-
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -33,9 +34,17 @@ public class MainActivity extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.platform_arrays, android.R.layout.simple_spinner_item);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
     }
 
-    public void initialLogin(View view){
+    public void initialLogin(View view) {
         setContentView(R.layout.initial_login_2);
 //        Button button = (Button) view;
 //        ((Button) view).setText("clicked");
@@ -46,18 +55,22 @@ public class MainActivity extends AppCompatActivity {
 //        startActivity(intent);
 
     }
-    public void initialLogin2(View view){
+
+    public void initialLogin2(View view) {
 
         setContentView(R.layout.initial_login_3);
     }
-    public void homeScreen(View view){
+
+    public void homeScreen(View view) {
 
         setContentView(R.layout.home_screen);
     }
 
-    public void addAccount(View view){
+    public void addAccount(View view) {
         setContentView(R.layout.add_account);
     }
+
+
 
 
 }
