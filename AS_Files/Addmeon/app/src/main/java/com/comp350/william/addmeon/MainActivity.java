@@ -1,5 +1,7 @@
 package com.comp350.william.addmeon;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -17,11 +19,12 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.ImageView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
