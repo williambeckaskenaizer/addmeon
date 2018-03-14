@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import android.content.Intent;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -95,6 +97,16 @@ public class MainActivity extends AppCompatActivity {
     public void scan(View view) {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, 0);
+    }
+
+    public void profileSave(View view)
+    {
+        Context context = getApplicationContext();
+        CharSequence text = "Saved Changes";
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 
     public void deleteAccount(View view)
