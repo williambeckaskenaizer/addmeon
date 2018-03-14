@@ -1,0 +1,4 @@
+#Mon Mar 12 02:16:38 PDT 2018
+base.0=C\:\\Users\\Ryan\\Documents\\GitHub\\addmeon\\AS_Files\\MyApplication\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\346
+path.0=classes.dex
+renamed.0=classes.dex
