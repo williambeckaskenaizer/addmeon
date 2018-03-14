@@ -17,6 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".DisplayMessageActivity"></activity>
+        <activity android:name=".Scan_Popup"
+            android:theme="@style/AppTheme.transparent"
+            ></activity>
+
     </application>
 
 </manifest>

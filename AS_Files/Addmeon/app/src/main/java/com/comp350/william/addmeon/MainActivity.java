@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.app.Activity;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
+
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
+
 /*
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -64,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.initial_login_3);
     }
 
+    public void changeImage(View view) {
+        ImageButton imgButton = (ImageButton)findViewById(R.id.imageButton);
+        imgButton.setBackgroundResource(R.drawable.cheeto);
+    }
+
     public void homeScreen(View view) {
 
         setContentView(R.layout.home_screen);
@@ -73,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.add_account);
     }
 
-    public void scan(View view) {
+    public void displayQR(View view) {
         setContentView(R.layout.display_qr_code);
     }
 
@@ -81,7 +90,43 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.profile_page);
     }
 
+    //public void goBack(View view) { super.onBackPressed(); }
 
+    public void scan(View view) {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent, 0);
+    }
 
+    public void deleteAccount(View view)
+    {
+        setContentView(R.layout.delete_profile);
+    }
+
+    public void deleteAccountYes(View view)
+    {
+        setContentView(R.layout.activity_main);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        if (requestCode == 0 && resultCode == RESULT_OK)
+        {
+            setContentView(R.layout.scanned_profile_page);
+        }
+        else if (requestCode == 1 && resultCode == RESULT_OK)
+        {
+            setContentView(R.layout.display_qr_code);
+        }
+        else if(requestCode == 2 && resultCode == RESULT_OK)
+        {
+            intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, 0);
+        }
+    }
+
+    public void navigation_scan(View view)
+    {
+        //startActivityForResult(new Intent(MainActivity.this,Scan_Popup.class),1);
+        setContentView(R.layout.popup_layout);
+    }
 
 }

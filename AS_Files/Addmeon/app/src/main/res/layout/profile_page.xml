@@ -49,7 +49,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.818" />
-
+<!--
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
             android:layout_width="368dp"
@@ -65,7 +65,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0"
             design:menu="@menu/bottom_nav_items" />
-
+-->
         <Button
             android:id="@+id/button5"
             android:layout_width="wrap_content"
@@ -74,8 +74,8 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:onClick="scan"
-            android:text=""
+            android:onClick="navigation_scan"
+            android:text="@string/menu_scan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +91,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:onClick="profile"
-            android:text=""
+            android:text="@string/menu_profile"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.935"
@@ -108,13 +108,32 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:onClick="homeScreen"
-            android:text=""
+            android:text="@string/menu_home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.064"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/button8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="Delete"
+            android:onClick="deleteAccount"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.935"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.829" />
 
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
