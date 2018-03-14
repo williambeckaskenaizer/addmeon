@@ -70,6 +70,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.add_account);
     }
 
+    public void scan(View view) {
+        setContentView(R.layout.display_qr_code);
+    }
+
+    public void profile(View view) {
+        setContentView(R.layout.profile_page);
+    }
+
 
 
 

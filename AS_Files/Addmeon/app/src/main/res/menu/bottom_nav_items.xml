@@ -13,7 +13,7 @@
     <item
         android:id="@+id/menu_scan"
         android:icon="@drawable/scan"
-        android:title="@string/menu_scan"
+        android:title="QR Code"
         android:onClick="display_qr_code"
         />
 
