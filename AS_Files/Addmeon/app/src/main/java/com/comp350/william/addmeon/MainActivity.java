@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void initialLogin(View view) {
-        setContentView(R.layout.initial_login_2);
+        setContentView(R.layout.initial_login_3);
 //        Button button = (Button) view;
 //        ((Button) view).setText("clicked");
 //        Intent intent = new Intent(this, DisplayMessageActivity.class);
@@ -65,11 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void initialLogin2(View view) {
-
-        setContentView(R.layout.initial_login_3);
-    }
-
     public void changeImage(View view) {
         ImageButton imgButton = (ImageButton)findViewById(R.id.imageButton);
         imgButton.setBackgroundResource(R.drawable.cheeto);
@@ -78,6 +73,8 @@ public class MainActivity extends AppCompatActivity {
     public void homeScreen(View view) {
 
         setContentView(R.layout.home_screen);
+
+        
     }
 
     public void addAccount(View view) {
@@ -140,5 +137,7 @@ public class MainActivity extends AppCompatActivity {
         //startActivityForResult(new Intent(MainActivity.this,Scan_Popup.class),1);
         setContentView(R.layout.popup_layout);
     }
+
+
 
 }
