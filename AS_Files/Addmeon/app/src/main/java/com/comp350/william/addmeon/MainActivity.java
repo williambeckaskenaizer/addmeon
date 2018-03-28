@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.home_screen);
 
-        
+
     }
 
     public void addAccount(View view) {
