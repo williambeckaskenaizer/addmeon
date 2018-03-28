@@ -28,6 +28,7 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    public ArrayList<Account> accountList = new ArrayList<Account>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,13 +73,16 @@ public class MainActivity extends AppCompatActivity {
 
     public void homeScreen(View view) {
 
+
         setContentView(R.layout.home_screen);
 
 
     }
 
     public void addAccount(View view) {
+
         setContentView(R.layout.add_account);
+
     }
 
     public void displayQR(View view) {
