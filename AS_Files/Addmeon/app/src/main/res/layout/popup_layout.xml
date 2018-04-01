@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/DiagonalSquaresBackground2"
+    android:background="@drawable/diagonalsquaresbackground2"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
