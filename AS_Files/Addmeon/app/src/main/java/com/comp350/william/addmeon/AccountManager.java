@@ -10,13 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
- * Created by Will on 3/12/2018.
+ * Created by Will on 4/1/2018.
  */
 
-public class AccountSpinner extends Activity implements AdapterView.OnItemSelectedListener {
-
+public class AccountManager extends Activity implements AdapterView.OnItemSelectedListener{
     private ListView mainListView ;
     private ArrayAdapter<String> listAdapter ;
+    public ArrayList<Account> accountList = new ArrayList<>();
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // An item was selected. You can retrieve the selected item using
@@ -27,10 +27,10 @@ public class AccountSpinner extends Activity implements AdapterView.OnItemSelect
 
         // Create and populate a List of platforms.
         String[] platforms = new String[] { "Steam",
-                                            "Xbox Live",
-                                            "Playstation Network",
-                                            "BattleNet",
-                                            "Nintendo"};
+                "Xbox Live",
+                "Playstation Network",
+                "BattleNet",
+                "Nintendo"};
         ArrayList<String> platformList = new ArrayList<String>();
         platformList.addAll( Arrays.asList(platforms) );
 
@@ -43,12 +43,13 @@ public class AccountSpinner extends Activity implements AdapterView.OnItemSelect
 
         if(pos == 0){
             //steam
-            listAdapter.add( "Steam" );
+            listAdapter.add("Steam");
         }else if(pos == 1){
             //XBL
             listAdapter.add( "Xbox Live" );
         }else if(pos == 2){
             //PSN
+
             listAdapter.add( "Playstation Network" );
         }else if(pos == 3) {
             //Battlenet
@@ -64,6 +65,14 @@ public class AccountSpinner extends Activity implements AdapterView.OnItemSelect
 
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
+    }
+
+    public Account getAccountFromSpinner(){
+        Account account = new Account();
+        return account;
+    }
+    public void addAccountToList(Account account){
+        accountList.add(account);
     }
 
 }

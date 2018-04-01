@@ -11,14 +11,14 @@ public class Account {
     String accountName;
     boolean isActive;
 
-    public void SetAccountName(String name){
+    public void setAccountName(String name){
         this.accountName = name;
     }
-    public void DefineService(String service){
+    public void setServiceName(String service){
         this.serviceName = service;
     }
 
-    public void SetActiveState(boolean state){
+    public void setActiveState(boolean state){
         this.isActive = state;
     }
 }
