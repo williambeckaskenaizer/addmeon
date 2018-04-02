@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.comp350.william.addmeon">
 
-    <!--<uses-feature android:name="android.hardware.type.watch" />-->
+    <!-- <uses-feature android:name="android.hardware.type.watch" /> -->
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
@@ -36,7 +36,7 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-
+        <activity android:name=".AccountSignIn"></activity>
     </application>
 
 </manifest>
