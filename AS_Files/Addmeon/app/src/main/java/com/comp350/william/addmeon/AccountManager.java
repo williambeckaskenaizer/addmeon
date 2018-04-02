@@ -49,7 +49,6 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
             listAdapter.add( "Xbox Live" );
         }else if(pos == 2){
             //PSN
-
             listAdapter.add( "Playstation Network" );
         }else if(pos == 3) {
             //Battlenet
@@ -76,3 +75,10 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
     }
 
 }
+/*
+            Account steam = new Account();
+            steam.setAccountName("Testing Steam");
+            steam.setActiveState(true);
+            steam.setServiceName("Steam");
+            addAccountToList(steam);
+ */

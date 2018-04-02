@@ -44,14 +44,18 @@ public class MainActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
 
-/*
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.platform_arrays, android.R.layout.simple_spinner_item);
-        // Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // Apply the adapter to the spinner
-        spinner.setAdapter(adapter);*/
+
+
+    }
+
+    private void addAccountButton(){
+        ImageButton addButton = findViewById(R.id.addAccountButton);
+        addButton.setOnClickListener(new View.OnClickListener(){
+        @Override
+        public void onClick(View view){
+            startActivity(new Intent(MainActivity.this, AccountManager.class));
+        }
+        });
     }
 
     public void initialLogin(View view) {
@@ -73,14 +77,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void homeScreen(View view) {
 
-
+        addAccountButton();
         setContentView(R.layout.home_screen);
 
 
     }
 
     public void addAccount(View view) {
-
         setContentView(R.layout.add_account);
 
     }
