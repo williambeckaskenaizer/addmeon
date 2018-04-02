@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.graphics.Color;
 
 /**
  * Created by Will on 4/1/2018.
@@ -31,8 +34,10 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
                 "Playstation Network",
                 "BattleNet",
                 "Nintendo"};
-        ArrayList<String> platformList = new ArrayList<String>();
+        ArrayList<String> platformList = new ArrayList<>();
         platformList.addAll( Arrays.asList(platforms) );
+
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         // Create ArrayAdapter using the planet list.
         listAdapter = new ArrayAdapter<String>(this, R.layout.home_screen, platformList);

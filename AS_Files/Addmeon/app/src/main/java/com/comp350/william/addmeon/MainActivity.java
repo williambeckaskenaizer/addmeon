@@ -60,14 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void initialLogin(View view) {
         setContentView(R.layout.initial_login_3);
-//        Button button = (Button) view;
-//        ((Button) view).setText("clicked");
-//        Intent intent = new Intent(this, DisplayMessageActivity.class);
-//        EditText editText = (EditText) findViewById(R.id.editText);
-//        String message = editText.getText().toString();
-//        intent.putExtra(EXTRA_MESSAGE, message);
-//        startActivity(intent);
-
     }
 
     public void changeImage(View view) {
@@ -76,11 +68,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void homeScreen(View view) {
-
         addAccountButton();
         setContentView(R.layout.home_screen);
-
-
     }
 
     public void addAccount(View view) {

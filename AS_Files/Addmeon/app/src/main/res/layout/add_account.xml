@@ -12,6 +12,7 @@
         android:layout_height="66dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:textColor="@color/white"
         android:entries="@array/platform_arrays"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
