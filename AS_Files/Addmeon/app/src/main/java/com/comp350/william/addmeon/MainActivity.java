@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void homeScreen(View view) {
-        addAccountButton();
+        //addAccountButton();
         setContentView(R.layout.home_screen);
     }
 
