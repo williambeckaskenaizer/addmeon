@@ -29,7 +29,10 @@ public class Scan_Popup extends Activity{
     }
 
     public void displayQR(View view) {
-        setContentView(R.layout.display_qr_code);
+        //setContentView(R.layout.display_qr_code);
+
+        startActivity(new Intent(Scan_Popup.this, Account.class));
+
         finish();
     }
 
