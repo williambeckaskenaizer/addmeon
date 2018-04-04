@@ -12,7 +12,7 @@ import android.view.View;
  * Created by Ryan on 3/13/2018.
  */
 
-public class Scan_Popup extends Activity{
+public class Scan_And_Generate_Popup extends Activity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class Scan_Popup extends Activity{
     public void displayQR(View view) {
         //setContentView(R.layout.display_qr_code);
 
-        startActivity(new Intent(Scan_Popup.this, Account.class));
+        startActivity(new Intent(Scan_And_Generate_Popup.this, Generate.class));
 
         finish();
     }

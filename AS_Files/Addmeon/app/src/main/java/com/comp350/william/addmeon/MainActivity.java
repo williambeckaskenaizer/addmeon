@@ -1,29 +1,14 @@
 package com.comp350.william.addmeon;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 import android.content.Intent;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.app.Activity;
-import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.provider.MediaStore;
-import android.widget.ImageView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -128,9 +113,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void navigation_scan(View view)
+    public void navigationScanAndGenerate(View view)
     {
-        //startActivityForResult(new Intent(MainActivity.this,Scan_Popup.class),1);
+        //startActivity(new Intent(MainActivity.this, Scan_And_Generate_Popup.class));
         setContentView(R.layout.popup_layout);
     }
 

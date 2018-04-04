@@ -21,9 +21,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
  * Created by ryan.santos175 on 4/4/18.
  */
 
-public class ScanFragment extends Fragment {
+public class Generate_Fragment extends Fragment {
 
-    public ScanFragment() {
+    public Generate_Fragment() {
     }
     Button generate_QRCode;
     ImageView qrCode;
