@@ -17,10 +17,11 @@ public class Account {
     String serviceName;
     String accountName;
     boolean isActive;
-
-
     private int id;
 
+    public String getAccount(){
+        return this.accountName;
+    }
     public void setAccountName(String name){
         this.accountName = name;
     }
@@ -31,4 +32,5 @@ public class Account {
     public void setActiveState(boolean state){
         this.isActive = state;
     }
+
 }
