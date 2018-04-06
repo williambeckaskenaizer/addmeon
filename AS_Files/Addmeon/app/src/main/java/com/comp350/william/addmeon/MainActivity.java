@@ -17,6 +17,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
@@ -35,20 +37,8 @@ public class MainActivity extends AppCompatActivity {
         // Capture the layout's TextView and set the string as its text
         TextView textView = findViewById(R.id.textView);
         textView.setText(message);
-
-
-
     }
 
-    private void addAccountButton(){
-        ImageButton addButton = findViewById(R.id.addAccountButton);
-        addButton.setOnClickListener(new View.OnClickListener(){
-        @Override
-        public void onClick(View view){
-            startActivity(new Intent(MainActivity.this, AccountSignIn.class));
-        }
-        });
-    }
 
     public void initialLogin(View view) {
         setContentView(R.layout.initial_login_3);

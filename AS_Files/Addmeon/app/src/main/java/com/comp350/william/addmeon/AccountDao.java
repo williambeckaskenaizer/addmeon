@@ -20,8 +20,6 @@ public interface AccountDao {
     @Query("DELETE FROM account_table")
     void deleteAll();
 
-    @Query("SELECT * from word_table ORDER BY word ASC")
-    LiveData<List<Account>> getAllWords();
-
-
+    @Query("SELECT * from account_table ORDER BY account ASC")
+    LiveData<List<Account>> getAllAccounts();
 }

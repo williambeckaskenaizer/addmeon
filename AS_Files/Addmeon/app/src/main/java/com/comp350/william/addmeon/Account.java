@@ -11,26 +11,21 @@ import android.support.annotation.NonNull;
  */
 @Entity(tableName = "account_table")
 public class Account {
-    @PrimaryKey(autoGenerate = true)
+
+    @PrimaryKey
     @NonNull
     @ColumnInfo(name = "account")
-    String serviceName;
-    String accountName;
-    boolean isActive;
-    private int id;
+
+    private String mAccount;
 
     public String getAccount(){
-        return this.accountName;
-    }
-    public void setAccountName(String name){
-        this.accountName = name;
-    }
-    public void setServiceName(String service){
-        this.serviceName = service;
+        return this.mAccount;
     }
 
-    public void setActiveState(boolean state){
-        this.isActive = state;
+    public Account(@NonNull String account) {
+        this.mAccount = account;
     }
+
+
 
 }

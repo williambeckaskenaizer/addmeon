@@ -17,7 +17,7 @@ public class AccountRepository {
    AccountRepository(Application application) {
         AccountDatabase db = AccountDatabase.getDatabase(application);
         mAccountDao = db.accountDao();
-        mAllAccounts = mAccountDao.getAllWords();
+        mAllAccounts = mAccountDao.getAllAccounts();
     }
 
     LiveData<List<Account>> getAllAccounts() {

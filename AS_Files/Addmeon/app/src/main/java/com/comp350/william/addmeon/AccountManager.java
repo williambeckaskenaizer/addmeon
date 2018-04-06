@@ -131,10 +131,6 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
         // Another interface callback
     }
 
-    public Account getAccountFromSpinner(){
-        Account account = new Account();
-        return account;
-    }
     public void addAccountToList(Account account){
         accountList.add(account);
     }
