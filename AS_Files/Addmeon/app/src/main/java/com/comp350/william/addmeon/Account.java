@@ -11,14 +11,14 @@ import android.support.annotation.NonNull;
  */
 @Entity(tableName = "account_table")
 public class Account {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "account")
     String serviceName;
     String accountName;
     boolean isActive;
 
-    @PrimaryKey(autoGenerate = true)
+
     private int id;
 
     public void setAccountName(String name){

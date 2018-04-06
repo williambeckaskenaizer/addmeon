@@ -23,7 +23,7 @@ abstract class AccountDatabase extends RoomDatabase {
                 if (INSTANCE == null) {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AccountDatabase.class, "word_database")
+                            AccountDatabase.class, "account_database")
                             .build();
                 }
             }
