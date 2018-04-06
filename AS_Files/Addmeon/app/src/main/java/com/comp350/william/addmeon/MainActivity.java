@@ -22,21 +22,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final AccountListAdapter adapter = new AccountListAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        super.onCreate(savedInstanceState);
+          super.onCreate(savedInstanceState);
 
-        //setContentView(R.layout.activity_main);
+          setContentView(R.layout.activity_main);
 
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(message);
+//        // Capture the layout's TextView and set the string as its text
+//        TextView textView = findViewById(R.id.textView);
+//        textView.setText(message);
     }
 
 
@@ -50,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void homeScreen(View view) {
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final AccountListAdapter adapter = new AccountListAdapter(this);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         //addAccountButton();
         setContentView(R.layout.home_screen);
     }
