@@ -22,6 +22,10 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
     public ArrayList<Account> accountList = new ArrayList<>();
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+
+        ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+        //((TextView) parent.getChildAt(0)).setTextSize(5);
+
         // An item was selected. You can retrieve the selected item using
         parent.getItemAtPosition(pos);
 
@@ -40,7 +44,7 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         // Create ArrayAdapter using the planet list.
-        listAdapter = new ArrayAdapter<String>(this, R.layout.home_screen, platformList);
+        listAdapter = new ArrayAdapter<String>(this, R.layout.spinner_items, platformList);
 
         // Add more platforms. If you passed a String[] instead of a List<String>
         // into the ArrayAdapter constructor, you must not add more items.
