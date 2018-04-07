@@ -1,5 +1,6 @@
 package com.comp350.william.addmeon;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Entity;
@@ -7,6 +8,8 @@ import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
+import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 
 /**
  * Created by william on 4/4/18.
@@ -30,4 +33,5 @@ abstract class AccountDatabase extends RoomDatabase {
         }
         return INSTANCE;
     }
+
 }

@@ -36,7 +36,8 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".AccountSignIn"></activity>
+        <activity android:name=".AccountSignIn" />
+        <activity android:name=".NewAccount"></activity>
     </application>
 
 </manifest>

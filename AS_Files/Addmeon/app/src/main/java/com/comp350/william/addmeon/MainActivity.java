@@ -1,7 +1,10 @@
 package com.comp350.william.addmeon;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,25 +15,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.provider.MediaStore;
 
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
+    private AccountViewModel mAccountViewModel;
+    public static final int NEW_ACCOUNT_ACTIVITY_REQUEST_CODE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_main);
-
-        // Get the Intent that started this activity and extract the string
-//        Intent intent = getIntent();
-//        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-//
-//        // Capture the layout's TextView and set the string as its text
-//        TextView textView = findViewById(R.id.textView);
-//        textView.setText(message);
     }
+
 
     public void initialLogin(View view) {
         setContentView(R.layout.initial_login_3);
@@ -41,8 +39,15 @@ public class MainActivity extends AppCompatActivity {
         imgButton.setBackgroundResource(R.drawable.cheeto);
     }
 
+    public void addAccountButton(){
+        Intent intent = new Intent(MainActivity.this, NewAccount.class);
+        startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
+    }
+
     public void homeScreen(View view) {
+
         setContentView(R.layout.home_screen);
+        mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final AccountListAdapter adapter = new AccountListAdapter(this);
         recyclerView.setAdapter(adapter);
@@ -51,9 +56,17 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
-        //addAccountButton();
+
+        mAccountViewModel.getAllAccounts().observe(this, new Observer<List<Account>>() {
+            @Override
+            public void onChanged(@Nullable final List<Account> accounts) {
+                // Update the cached copy of the words in the adapter.
+                adapter.setAccounts(accounts);
+            }
+        });
 
 
+        addAccountButton();
     }
 
     public void addAccount(View view) {
@@ -109,6 +122,17 @@ public class MainActivity extends AppCompatActivity {
         {
             intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 0);
+        }
+        super.onActivityResult(requestCode, resultCode, intent);
+
+        if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+            Account account = new Account(intent.getStringExtra(NewAccount.EXTRA_REPLY));
+            mAccountViewModel.insert(account);
+        } else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    R.string.empty_not_saved,
+                    Toast.LENGTH_LONG).show();
         }
     }
 

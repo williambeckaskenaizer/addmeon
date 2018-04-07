@@ -13,6 +13,10 @@
     <string name="menu_scan">Scan</string>
     <string name="menu_profile">Profile</string>
     <string name="title_activity_initial_startup">InitialStartup</string>
+
+    <string name="hint_word">Account...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Word not saved because it is empty.</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
