@@ -16,25 +16,21 @@ import android.provider.MediaStore;
 public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-          super.onCreate(savedInstanceState);
 
-          setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
         // Get the Intent that started this activity and extract the string
-        Intent intent = getIntent();
-        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
-
+//        Intent intent = getIntent();
+//        String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+//
 //        // Capture the layout's TextView and set the string as its text
 //        TextView textView = findViewById(R.id.textView);
 //        textView.setText(message);
     }
-
 
     public void initialLogin(View view) {
         setContentView(R.layout.initial_login_3);
@@ -46,12 +42,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void homeScreen(View view) {
+        setContentView(R.layout.home_screen);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final AccountListAdapter adapter = new AccountListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
         //addAccountButton();
-        setContentView(R.layout.home_screen);
+
+
     }
 
     public void addAccount(View view) {

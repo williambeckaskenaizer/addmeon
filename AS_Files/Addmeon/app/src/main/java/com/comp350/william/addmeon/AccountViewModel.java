@@ -11,7 +11,9 @@ import java.util.List;
  */
 
 public class AccountViewModel extends AndroidViewModel {
+
     private AccountRepository mRepository;
+
     private LiveData<List<Account>> mAllAccounts;
 
     public AccountViewModel (Application application) {
@@ -19,11 +21,7 @@ public class AccountViewModel extends AndroidViewModel {
         mRepository = new AccountRepository(application);
         mAllAccounts = mRepository.getAllAccounts();
     }
-    LiveData<List<Account>> getAllAccounts() {
-        return mAllAccounts;
-    }
+    LiveData<List<Account>> getAllAccounts() { return mAllAccounts; }
 
-    public void insert(Account account) {
-        mRepository.insert(account);
-    }
+    public void insert(Account account) { mRepository.insert(account); }
 }
