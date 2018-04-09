@@ -139,9 +139,7 @@ public class MainActivity extends AppCompatActivity {
     public void navigationScanAndGenerate(View view)
     {
         //startActivity(new Intent(MainActivity.this, Scan_And_Generate_Popup.class));
+        //startActivity(new Intent(MainActivity.this, Generate.class));
         setContentView(R.layout.popup_layout);
     }
-
-
-
 }

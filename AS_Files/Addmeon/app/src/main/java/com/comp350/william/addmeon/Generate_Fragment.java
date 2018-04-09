@@ -31,17 +31,18 @@ public class Generate_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.generate_main, container, false);
-        generate_QRCode=(Button)view.findViewById(R.id.generate_qr);
-        qrCode=(ImageView)view.findViewById(R.id.imageView);
-        mEditText=(EditText)view.findViewById(R.id.editText);
+        View view = inflater.inflate(R.layout.generate_main, container, false);
+        generate_QRCode = (Button)view.findViewById(R.id.generate_qr);
+        qrCode = (ImageView)view.findViewById(R.id.imageView);
+        mEditText = (EditText)view.findViewById(R.id.editText);
         generate_QRCode.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String text=mEditText.getText().toString();
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
                 try {
-                    BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,200,200);
+                    BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,400,400);
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                     qrCode.setImageBitmap(bitmap);
