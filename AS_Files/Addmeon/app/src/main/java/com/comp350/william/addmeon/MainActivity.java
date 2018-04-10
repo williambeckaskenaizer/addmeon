@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         final ImageButton button = findViewById(R.id.addAccountButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                addAccountButton();
             }
         });
     }
