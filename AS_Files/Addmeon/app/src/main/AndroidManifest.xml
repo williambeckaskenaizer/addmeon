@@ -37,7 +37,8 @@
             android:value="true" />
 
         <activity android:name=".AccountSignIn" />
-        <activity android:name=".NewAccount"></activity>
+        <activity android:name=".NewAccount" />
+        <activity android:name=".blank"></activity>
     </application>
 
 </manifest>
