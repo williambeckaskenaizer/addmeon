@@ -13,7 +13,5 @@ public class Generate extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.generate_qr_code);
-
-        finish();
     }
 }

@@ -31,7 +31,7 @@ public class Generate_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.generate_main, container, false);
+        View view = inflater.inflate(R.layout.generate_scan_fragment, container, false);
         generate_QRCode = (Button)view.findViewById(R.id.generate_qr);
         qrCode = (ImageView)view.findViewById(R.id.imageView);
         mEditText = (EditText)view.findViewById(R.id.editText);

@@ -39,6 +39,7 @@
         <activity android:name=".AccountSignIn" />
         <activity android:name=".NewAccount" />
         <activity android:name=".blank"></activity>
+        <activity android:name=".Generate"></activity>
     </application>
 
 </manifest>

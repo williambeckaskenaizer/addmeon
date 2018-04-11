@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
         Intent INTENT = new Intent(MainActivity.this, Generate.class);
 
         //startActivity(new Intent(MainActivity.this, Scan_And_Generate_Popup.class));
-        //startActivity(INTENT);
-        startActivity(new Intent(MainActivity.this, blank.class));
+        startActivity(INTENT);
+        //startActivity(new Intent(MainActivity.this, blank.class));
         //setContentView(R.layout.popup_layout);
     }
 
