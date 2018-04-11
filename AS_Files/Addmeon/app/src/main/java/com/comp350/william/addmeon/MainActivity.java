@@ -151,4 +151,34 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, blank.class));
         //setContentView(R.layout.popup_layout);
     }
+
+    public void addSteam(View view)
+    {
+        // Add Steam to account list
+    }
+
+    public void addBattleNet(View view)
+    {
+        // Add BattleNet to account list
+    }
+
+    public void addXboxLive(View view)
+    {
+        // Add Xbox Live to account list
+    }
+
+    public void addPSN(View view)
+    {
+        // Add PSN to account list
+    }
+
+    public void addNintendo(View view)
+    {
+        // Add Nintendo to account list
+    }
+
+    public void addRoblox(View view)
+    {
+        setContentView(R.layout.add_account);
+    }
 }
