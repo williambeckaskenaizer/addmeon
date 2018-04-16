@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.comp350.william.addmeon">
 
     <!-- <uses-feature android:name="android.hardware.type.watch" /> -->
@@ -23,7 +24,7 @@
         <activity android:name=".DisplayMessageActivity" />
         <activity
             android:name=".Scan_And_Generate_Popup"
-            android:theme="@style/AppTheme.transparent" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <uses-library
             android:name="com.google.android.wearable"
@@ -40,6 +41,11 @@
         <activity android:name=".NewAccount" />
         <activity android:name=".blank"></activity>
         <activity android:name=".Generate"></activity>
+        <activity android:name=".Scan"
+            android:screenOrientation="portrait"
+            tools:replace="android:screenOrientation"
+            android:stateNotNeeded="true">
+        </activity>
     </application>
 
 </manifest>

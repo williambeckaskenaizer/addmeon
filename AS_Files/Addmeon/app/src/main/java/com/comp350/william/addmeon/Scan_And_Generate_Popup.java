@@ -25,7 +25,11 @@ public class Scan_And_Generate_Popup extends Activity{
         int height = dm.heightPixels;
         int width = dm.widthPixels;
 
-        getWindow().setLayout((int)(width*.8),(int)(height*.5));
+        //getWindow().setLayout((int)(width*.8),(int)(height*.5));
+
+        getWindow().setLayout((int)(width*.7),(int)(height*.3));
+
+        setFinishOnTouchOutside(true);
     }
 
     public void displayQR(View view) {
@@ -37,8 +41,9 @@ public class Scan_And_Generate_Popup extends Activity{
     }
 
     public void scan(View view) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, 0);
+        startActivity(new Intent(Scan_And_Generate_Popup.this, Scan.class));
+
+        finish();
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {

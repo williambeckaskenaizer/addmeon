@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:background="@drawable/diagonalsquaresbackground2">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <ImageButton
         android:id="@+id/scan"
@@ -9,8 +9,8 @@
         android:layout_height="100dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginTop="106dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="78dp"
         android:onClick="scan"
         android:scaleType="fitCenter"
         android:src="@drawable/scan_icon" />
@@ -18,10 +18,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView12"
-        android:layout_alignBottom="@+id/textView12"
-        android:layout_marginStart="28dp"
-        android:layout_toEndOf="@+id/generate"
+        android:layout_alignEnd="@+id/scan"
+        android:layout_below="@+id/scan"
+        android:layout_marginEnd="34dp"
         android:text="Scan"
         android:textColor="@color/white"
         android:textStyle="bold" />
@@ -38,15 +37,14 @@
         android:src="@drawable/qrcode" />
 
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/generate"
+        android:layout_alignEnd="@+id/generate"
         android:layout_below="@+id/generate"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
         android:text="Generate"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        android:id="@+id/textView12" />
+        android:textStyle="bold" />
 
 </RelativeLayout>
