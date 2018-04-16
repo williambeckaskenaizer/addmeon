@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        if (requestCode == 0 && resultCode == RESULT_OK)
+        /*if (requestCode == 0 && resultCode == RESULT_OK)
         {
             setContentView(R.layout.scanned_profile_page);
         }
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         {
             intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 0);
-        }
+        }*/
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
