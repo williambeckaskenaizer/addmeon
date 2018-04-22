@@ -1,7 +1,11 @@
 package com.comp350.william.addmeon;
 
+import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.arch.persistence.db.SupportSQLiteOpenHelper;
+import android.arch.persistence.room.DatabaseConfiguration;
+import android.arch.persistence.room.InvalidationTracker;
 import android.content.Intent;
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -19,7 +23,11 @@ import android.provider.MediaStore;
 import java.util.List;
 
 
+
+
 public class MainActivity extends AppCompatActivity {
+    private AccountDao accountDao;
+    private AccountDatabase db;
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private AccountViewModel mAccountViewModel;
     public static final int NEW_ACCOUNT_ACTIVITY_REQUEST_CODE = 1;
@@ -27,12 +35,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.initial_login_3);
     }
 
 
     public void initialLogin(View view) {
         setContentView(R.layout.initial_login_3);
+
     }
 
     public void changeImage(View view) {
@@ -47,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void homeScreen(View view) {
-
+        accountDao.nukeAccountList();
         setContentView(R.layout.home_screen);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -112,6 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void deleteAccountYes(View view)
     {
+
         setContentView(R.layout.activity_main);
     }
 
@@ -132,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Account account = new Account(intent.getStringExtra(NewAccount.EXTRA_REPLY));
+            Account account = new Account(intent.getStringExtra(NewAccount.EXTRA_REPLY), intent.getStringExtra(NewAccount.ACCOUNT_TYPE));
             mAccountViewModel.insert(account);
         } else {
             Toast.makeText(

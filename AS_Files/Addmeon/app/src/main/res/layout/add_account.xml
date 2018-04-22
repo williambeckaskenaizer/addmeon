@@ -38,8 +38,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.18" />
 
+    <EditText
+        android:id="@+id/edit_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/hint_word"
+        android:inputType="textAutoComplete"
+        android:padding="@dimen/small_padding"
+        android:layout_marginBottom="@dimen/big_padding"
+        android:layout_marginTop="@dimen/big_padding"
+        android:textSize="18sp" />
+
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/steamButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -47,7 +59,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:onClick="addSteam"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,10 +66,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.3"
-        app:srcCompat="@drawable/steamlogo" />
+        app:srcCompat="@drawable/steamicon" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/battlenetButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -66,7 +77,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:onClick="addBattleNet"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,7 +87,7 @@
         app:srcCompat="@drawable/battlenetlogo" />
 
     <ImageButton
-        android:id="@+id/imageButton4"
+        android:id="@+id/xboxButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -85,7 +95,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:onClick="addXboxLive"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -96,7 +105,7 @@
         app:srcCompat="@drawable/xboxlogo" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/psnButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -104,7 +113,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:onClick="addPSN"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,7 +123,7 @@
         app:srcCompat="@drawable/psnlogo" />
 
     <ImageButton
-        android:id="@+id/imageButton6"
+        android:id="@+id/nintendoButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
@@ -123,7 +131,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="@null"
-        android:onClick="addNintendo"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,11 +141,10 @@
         app:srcCompat="@drawable/nintendologo" />
 
     <ImageButton
-        android:id="@+id/imageButton7"
+        android:id="@+id/robloxButton"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@null"
-        android:onClick="addRoblox"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -23,5 +23,7 @@ public class AccountViewModel extends AndroidViewModel {
     }
     LiveData<List<Account>> getAllAccounts() { return mAllAccounts; }
 
-    public void insert(Account account) { mRepository.insert(account); }
+    public void insert(Account account) {
+        mRepository.insert(account);
+    }
 }

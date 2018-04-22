@@ -18,7 +18,7 @@ public interface AccountDao {
     void insert(Account account);
 
     @Query("DELETE FROM account_table")
-    void deleteAll();
+    void nukeAccountList();
 
     @Query("SELECT * from account_table ORDER BY account ASC")
     LiveData<List<Account>> getAllAccounts();
