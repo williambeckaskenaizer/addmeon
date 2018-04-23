@@ -28,7 +28,7 @@ public class NewAccount extends AppCompatActivity {
         steamButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 ACCOUNT_TYPE = "Steam";
-                Intent replyIntent = new Intent();
+                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
                 if (TextUtils.isEmpty(mEditAccountView.getText())) {
                     setResult(RESULT_CANCELED, replyIntent);
                 } else {
