@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.initial_login_3);
+        setContentView(R.layout.home_screen);
     }
 
 
@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
     public void addAccountButton(){
         Intent intent = new Intent(MainActivity.this, NewAccount.class);
         startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
+        setContentView(R.layout.add_account);
 
     }
 
