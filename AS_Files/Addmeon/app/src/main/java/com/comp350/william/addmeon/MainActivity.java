@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
+        homeScreen(getCurrentFocus());
     }
 
 
@@ -50,14 +51,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void addAccountButton(){
+        setContentView(R.layout.add_account);
         Intent intent = new Intent(MainActivity.this, NewAccount.class);
         startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
-        setContentView(R.layout.add_account);
+
 
     }
 
     public void homeScreen(View view) {
-        accountDao.nukeAccountList();
+        //accountDao.nukeAccountList();
         setContentView(R.layout.home_screen);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
@@ -82,12 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 addAccountButton();
             }
         });
-    }
-
-    public void addAccount(View view) {
-
-        //setContentView(R.layout.add_account);
-
     }
 
     public void displayQR(View view) {

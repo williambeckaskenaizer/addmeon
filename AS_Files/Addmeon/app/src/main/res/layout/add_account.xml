@@ -38,17 +38,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.18" />
 
-    <EditText
-        android:id="@+id/edit_account"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/hint_word"
-        android:inputType="textAutoComplete"
-        android:padding="@dimen/small_padding"
-        android:layout_marginBottom="@dimen/big_padding"
-        android:layout_marginTop="@dimen/big_padding"
-        android:textSize="18sp" />
+    <!--<EditText-->
+        <!--android:id="@+id/edit_account"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:fontFamily="sans-serif-light"-->
+        <!--android:hint="@string/hint_word"-->
+        <!--android:inputType="textAutoComplete"-->
+        <!--android:padding="@dimen/small_padding"-->
+        <!--android:layout_marginBottom="@dimen/big_padding"-->
+        <!--android:layout_marginTop="@dimen/big_padding"-->
+        <!--android:textSize="18sp" />-->
 
     <ImageButton
         android:id="@+id/steamButton"
