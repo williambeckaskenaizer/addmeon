@@ -30,6 +30,7 @@ public class NewAccount extends AppCompatActivity {
         final AccountDao accountDao = AccountDatabase.getDatabase(getApplicationContext()).accountDao();
         //mEditAccountView = findViewById(R.id.edit_account);
 
+
         db = AccountDatabase.getDatabase(NewAccount.this);
 
 
@@ -38,14 +39,18 @@ public class NewAccount extends AppCompatActivity {
         final ImageButton battlenetButton = findViewById(R.id.battlenetButton);
         //Add steam account
         steamButton.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View view) {
                 ACCOUNT_TYPE = "Steam";
                 Intent replyIntent = new Intent(NewAccount.this, Steam.class);
-                Account steamAccount = new Account("Username", "Steam");
-
+                Account steamAccount = new Account("Relativity", "Steam: ");
+                db.accountDao().nukeAccountList();
                 db.accountDao().insert(steamAccount);
                 replyIntent.putExtra(EXTRA_REPLY, "Steam");
                 setResult(RESULT_OK, replyIntent);
+
+
+
 //                if (TextUtils.isEmpty(mEditAccountView.getText())) {
 //
 //                    setResult(RESULT_CANCELED, replyIntent);

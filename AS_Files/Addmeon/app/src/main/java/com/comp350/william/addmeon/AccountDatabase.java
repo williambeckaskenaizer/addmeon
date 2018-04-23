@@ -21,12 +21,14 @@ abstract class AccountDatabase extends RoomDatabase {
     private static AccountDatabase INSTANCE;
 
     public static AccountDatabase getDatabase(final Context context) {
+
+
         if (INSTANCE == null) {
             synchronized (AccountDatabase.class) {
                 if (INSTANCE == null) {
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            AccountDatabase.class, "account_database")
+                            AccountDatabase.class, "account_database").allowMainThreadQueries()
                             .build();
                 }
             }

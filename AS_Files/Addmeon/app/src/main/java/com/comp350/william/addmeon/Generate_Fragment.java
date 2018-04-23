@@ -28,21 +28,22 @@ public class Generate_Fragment extends Fragment {
     Button generate_QRCode;
     ImageView qrCode;
     EditText mEditText;
+    String urlString = "https://steamcommunity.com/id/reIativity";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.generate_scan_fragment, container, false);
         generate_QRCode = (Button)view.findViewById(R.id.generate_qr);
         qrCode = (ImageView)view.findViewById(R.id.imageView);
-        mEditText = (EditText)view.findViewById(R.id.editText);
+        //mEditText = (EditText)view.findViewById(R.id.editText);
         generate_QRCode.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                String text=mEditText.getText().toString();
+                //String text=mEditText.getText().toString();
                 MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
                 try {
-                    BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE,400,400);
+                    BitMatrix bitMatrix = multiFormatWriter.encode(urlString, BarcodeFormat.QR_CODE,400,400);
                     BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
                     Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
                     qrCode.setImageBitmap(bitmap);

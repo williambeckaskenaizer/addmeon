@@ -54,12 +54,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.add_account);
         Intent intent = new Intent(MainActivity.this, NewAccount.class);
         startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
-
-
     }
 
     public void homeScreen(View view) {
-        //accountDao.nukeAccountList();
+        //db.accountDao().nukeAccountList();
         setContentView(R.layout.home_screen);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
