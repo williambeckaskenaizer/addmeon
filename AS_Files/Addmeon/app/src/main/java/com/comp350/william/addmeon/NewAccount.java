@@ -28,7 +28,6 @@ public class NewAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_account);
         final AccountDao accountDao = AccountDatabase.getDatabase(getApplicationContext()).accountDao();
-        //mEditAccountView = findViewById(R.id.edit_account);
 
 
         db = AccountDatabase.getDatabase(NewAccount.this);
@@ -44,9 +43,8 @@ public class NewAccount extends AppCompatActivity {
                 ACCOUNT_TYPE = "Steam";
                 Intent replyIntent = new Intent(NewAccount.this, Steam.class);
                 Account steamAccount = new Account("Relativity", "Steam: ");
-                db.accountDao().nukeAccountList();
                 db.accountDao().insert(steamAccount);
-                replyIntent.putExtra(EXTRA_REPLY, "Steam");
+                replyIntent.putExtra(EXTRA_REPLY, "funny doge meme");
                 setResult(RESULT_OK, replyIntent);
 
 

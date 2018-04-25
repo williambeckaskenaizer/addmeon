@@ -35,8 +35,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_screen);
-        homeScreen(getCurrentFocus());
+        Intent intent = new Intent(MainActivity.this, HomeScreen.class);
+        startActivity(intent);
+        finish();
     }
 
 
@@ -48,40 +49,6 @@ public class MainActivity extends AppCompatActivity {
     public void changeImage(View view) {
         ImageButton imgButton = (ImageButton)findViewById(R.id.imageButton);
         imgButton.setBackgroundResource(R.drawable.cheeto);
-    }
-
-    public void addAccountButton(){
-        setContentView(R.layout.add_account);
-        Intent intent = new Intent(MainActivity.this, NewAccount.class);
-        startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
-    }
-
-    public void homeScreen(View view) {
-        //db.accountDao().nukeAccountList();
-        setContentView(R.layout.home_screen);
-        mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        final AccountListAdapter adapter = new AccountListAdapter(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-
-        mAccountViewModel.getAllAccounts().observe(this, new Observer<List<Account>>() {
-            @Override
-            public void onChanged(@Nullable final List<Account> accounts) {
-                // Update the cached copy of the words in the adapter.
-                adapter.setAccounts(accounts);
-            }
-        });
-        final ImageButton button = findViewById(R.id.addAccountButton);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                addAccountButton();
-            }
-        });
     }
 
     public void displayQR(View view) {
@@ -121,19 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        /*if (requestCode == 0 && resultCode == RESULT_OK)
-        {
-            setContentView(R.layout.scanned_profile_page);
-        }
-        else if (requestCode == 1 && resultCode == RESULT_OK)
-        {
-            setContentView(R.layout.display_qr_code);
-        }
-        else if(requestCode == 2 && resultCode == RESULT_OK)
-        {
-            intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, 0);
-        }*/
+
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -147,40 +102,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void navigationScanAndGenerate(View view)
-    {
-        Intent INTENT = new Intent(MainActivity.this, Scan_And_Generate_Popup.class);
-
-        //startActivity(new Intent(MainActivity.this, Scan.class));
-        startActivity(INTENT); // working
-        //startActivity(new Intent(MainActivity.this, blank.class));
-        //setContentView(R.layout.popup_layout);
-    }
-
-    public void addSteam(View view)
-    {
-        // Add Steam to account list
-    }
-
-    public void addBattleNet(View view)
-    {
-        // Add BattleNet to account list
-    }
-
-    public void addXboxLive(View view)
-    {
-        // Add Xbox Live to account list
-    }
-
-    public void addPSN(View view)
-    {
-        // Add PSN to account list
-    }
-
-    public void addNintendo(View view)
-    {
-        // Add Nintendo to account list
-    }
 
     public void addRoblox(View view)
     {
