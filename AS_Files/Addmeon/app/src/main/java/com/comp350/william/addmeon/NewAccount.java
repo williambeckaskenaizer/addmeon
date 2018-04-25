@@ -28,7 +28,6 @@ public class NewAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_account);
         final AccountDao accountDao = AccountDatabase.getDatabase(getApplicationContext()).accountDao();
-        //mEditAccountView = findViewById(R.id.edit_account);
 
 
         db = AccountDatabase.getDatabase(NewAccount.this);
