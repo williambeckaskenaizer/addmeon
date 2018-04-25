@@ -8,8 +8,8 @@
 
     <ImageButton
         android:id="@+id/imageButton9"
-        android:layout_width="442dp"
-        android:layout_height="625dp"
+        android:layout_width="424dp"
+        android:layout_height="548dp"
         android:contentDescription="return to add account"
         android:onClick="addAccount"
         android:scaleType="fitXY"
@@ -17,5 +17,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/add_roblox" />
+        app:layout_constraintVertical_bias="0.38"
+        app:srcCompat="@drawable/dawae" />
 </android.support.constraint.ConstraintLayout>
