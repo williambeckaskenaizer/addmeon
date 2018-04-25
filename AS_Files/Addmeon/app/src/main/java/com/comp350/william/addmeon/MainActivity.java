@@ -88,19 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        /*if (requestCode == 0 && resultCode == RESULT_OK)
-        {
-            setContentView(R.layout.scanned_profile_page);
-        }
-        else if (requestCode == 1 && resultCode == RESULT_OK)
-        {
-            setContentView(R.layout.display_qr_code);
-        }
-        else if(requestCode == 2 && resultCode == RESULT_OK)
-        {
-            intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, 0);
-        }*/
+
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
@@ -114,40 +102,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void navigationScanAndGenerate(View view)
-    {
-        Intent INTENT = new Intent(MainActivity.this, Scan_And_Generate_Popup.class);
-
-        //startActivity(new Intent(MainActivity.this, Scan.class));
-        startActivity(INTENT); // working
-        //startActivity(new Intent(MainActivity.this, blank.class));
-        //setContentView(R.layout.popup_layout);
-    }
-
-    public void addSteam(View view)
-    {
-        // Add Steam to account list
-    }
-
-    public void addBattleNet(View view)
-    {
-        // Add BattleNet to account list
-    }
-
-    public void addXboxLive(View view)
-    {
-        // Add Xbox Live to account list
-    }
-
-    public void addPSN(View view)
-    {
-        // Add PSN to account list
-    }
-
-    public void addNintendo(View view)
-    {
-        // Add Nintendo to account list
-    }
 
     public void addRoblox(View view)
     {
