@@ -39,13 +39,14 @@
 
         <activity android:name=".AccountSignIn" />
         <activity android:name=".NewAccount" />
-        <activity android:name=".blank"></activity>
-        <activity android:name=".Generate"></activity>
-        <activity android:name=".Scan"
+        <activity android:name=".blank" />
+        <activity android:name=".Generate" />
+        <activity
+            android:name=".Scan"
             android:screenOrientation="portrait"
-            tools:replace="android:screenOrientation"
-            android:stateNotNeeded="true">
-        </activity>
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation"></activity>
+        <activity android:name=".HomeScreen"></activity>
     </application>
 
 </manifest>
