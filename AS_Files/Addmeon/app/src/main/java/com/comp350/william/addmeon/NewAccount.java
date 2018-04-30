@@ -42,11 +42,9 @@ public class NewAccount extends AppCompatActivity {
             public void onClick(View view) {
                 String accountType = "STEAM";
                 Intent intent = new Intent(NewAccount.this, Steam.class);
-                //startActivity(intent);
-                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
-                Account steamAccount = new Account("Relativity - " + accountType);
-                db.accountDao().insert(steamAccount);
-                setResult(RESULT_OK, replyIntent);
+                startActivity(intent);
+//                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
+//                setResult(RESULT_OK, replyIntent);
                 finish();
             }
         });
@@ -56,7 +54,7 @@ public class NewAccount extends AppCompatActivity {
             public void onClick(View view) {
                 String accountType = "Xbox";
                 Intent intent = new Intent(NewAccount.this, Steam.class);
-                //startActivity(intent);
+                startActivity(intent);
                 Intent replyIntent = new Intent(NewAccount.this, Steam.class);
                 Account xboxAccount = new Account("Relativity - " + accountType);
                 db.accountDao().insert(xboxAccount);
@@ -69,7 +67,7 @@ public class NewAccount extends AppCompatActivity {
             public void onClick(View view) {
                 String accountType = "Battlenet";
                 Intent intent = new Intent(NewAccount.this, Steam.class);
-                //startActivity(intent);
+                startActivity(intent);
                 Intent replyIntent = new Intent(NewAccount.this, Steam.class);
                 Account battlenetAccount = new Account("Relativity - " + accountType);
                 db.accountDao().insert(battlenetAccount);
