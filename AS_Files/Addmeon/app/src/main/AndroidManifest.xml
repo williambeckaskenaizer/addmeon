@@ -50,7 +50,7 @@
             tools:replace="android:screenOrientation" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".Steam" />
-        <activity android:name=".ProfilePage"></activity>
+        <activity android:name=".ProfilePage"/>
     </application>
 
 </manifest>
