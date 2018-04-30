@@ -103,13 +103,20 @@
         app:layout_constraintRight_toRightOf="parent"
         app:menu="@menu/bottom_nav_items" />
 
-    <android.support.v7.widget.RecyclerView
+    <!--<android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="296dp"
         android:layout_height="181dp"
         android:background="@android:color/darker_gray"
         tools:layout_editor_absoluteX="44dp"
         tools:layout_editor_absoluteY="184dp"
-        tools:listitem="@layout/recyclerview_item" />
+        tools:listitem="@layout/recyclerview_item" />-->
+
+    <TextView
+        android:id="@+id/scanned_text_view_id"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/white"/>
 
 </android.support.constraint.ConstraintLayout>
