@@ -4,25 +4,25 @@
 
     <item
         android:id="@+id/menu_home"
-        android:icon="@drawable/home"
         android:title="@string/menu_home"
+        android:icon="@drawable/home"
         android:onClick="home_screen"
         />
 
 
     <item
         android:id="@+id/menu_scan"
+        android:title="@string/menu_qr"
         android:icon="@drawable/scan"
-        android:title="QR Code"
         android:onClick="display_qr_code"
         />
 
 
     <item
-            android:id="@+id/menu_profile"
-            android:title="@string/menu_profile"
-            android:icon="@drawable/profile"
-            android:onClick="profile_page"
+        android:id="@+id/menu_profile"
+        android:title="@string/menu_profile"
+        android:icon="@drawable/profile"
+        android:onClick="profile_page"
         />
 
 
