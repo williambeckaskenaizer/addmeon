@@ -17,20 +17,20 @@ public class Account {
     @ColumnInfo(name = "account")
     private String mAccount;
 
-    @ColumnInfo(name = "type")
-    private String mAccountType;
+//    @ColumnInfo(name = "type")
+//    private String mAccountType;
 
     public String getAccount(){
         return this.mAccount;
     }
 
-    public String getAccountType() {
-        return this.mAccountType;
-    }
+//    public String getAccountType() {
+//        return this.mAccountType;
+//    }
 
-    public Account(@NonNull String account, @NonNull String accountType) {
+    public Account(@NonNull String account/*, @NonNull String accountType*/) {
         this.mAccount = account;
-        this.mAccountType = accountType;
+//        this.mAccountType = accountType;
     }
 
 

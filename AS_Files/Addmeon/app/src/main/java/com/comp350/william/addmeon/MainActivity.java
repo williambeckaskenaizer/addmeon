@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, intent);
 
         if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Account account = new Account(intent.getStringExtra(NewAccount.EXTRA_REPLY), intent.getStringExtra(NewAccount.ACCOUNT_TYPE));
+            Account account = new Account(intent.getStringExtra(NewAccount.EXTRA_REPLY));
             mAccountViewModel.insert(account);
         } else {
             Toast.makeText(

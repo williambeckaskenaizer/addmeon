@@ -40,54 +40,42 @@ public class NewAccount extends AppCompatActivity {
         steamButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                ACCOUNT_TYPE = "Steam";
+                String accountType = "STEAM";
+                Intent intent = new Intent(NewAccount.this, Steam.class);
+                //startActivity(intent);
                 Intent replyIntent = new Intent(NewAccount.this, Steam.class);
-                Account steamAccount = new Account("Relativity", "Steam: ");
+                Account steamAccount = new Account("Relativity - " + accountType);
                 db.accountDao().insert(steamAccount);
-                replyIntent.putExtra(EXTRA_REPLY, "funny doge meme");
                 setResult(RESULT_OK, replyIntent);
-
-
-
-//                if (TextUtils.isEmpty(mEditAccountView.getText())) {
-//
-//                    setResult(RESULT_CANCELED, replyIntent);
-//                } else {
-//
-//
-//
-//                }
                 finish();
             }
         });
 
-//        // Add xbox account
-//        xboxButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent replyIntent = new Intent();
-//                if (TextUtils.isEmpty(mEditAccountView.getText())) {
-//                    setResult(RESULT_CANCELED, replyIntent);
-//                } else {
-//                    String account = mEditAccountView.getText().toString();
-//                    replyIntent.putExtra(EXTRA_REPLY, account);
-//                    setResult(RESULT_OK, replyIntent);
-//                }
-//                finish();
-//            }
-//        });
-//        // Add Battlenet account
-//        battlenetButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//                Intent replyIntent = new Intent();
-//                if (TextUtils.isEmpty(mEditAccountView.getText())) {
-//                    setResult(RESULT_CANCELED, replyIntent);
-//                } else {
-//                    String account = mEditAccountView.getText().toString();
-//                    replyIntent.putExtra(EXTRA_REPLY, account);
-//                    setResult(RESULT_OK, replyIntent);
-//                }
-//                finish();
-//            }
-//        });
+        // Add xbox account
+        xboxButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String accountType = "Xbox";
+                Intent intent = new Intent(NewAccount.this, Steam.class);
+                //startActivity(intent);
+                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
+                Account xboxAccount = new Account("Relativity - " + accountType);
+                db.accountDao().insert(xboxAccount);
+                setResult(RESULT_OK, replyIntent);
+                finish();
+            }
+        });
+        // Add Battlenet account
+        battlenetButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String accountType = "Battlenet";
+                Intent intent = new Intent(NewAccount.this, Steam.class);
+                //startActivity(intent);
+                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
+                Account battlenetAccount = new Account("Relativity - " + accountType);
+                db.accountDao().insert(battlenetAccount);
+                setResult(RESULT_OK, replyIntent);
+                finish();
+            }
+        });
     }
 }

@@ -7,6 +7,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.TypeConverters;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -15,6 +16,7 @@ import android.support.annotation.NonNull;
  * Created by william on 4/4/18.
  */
 @Database(entities = {Account.class}, version = 1)
+@TypeConverters({Converters.class})
 abstract class AccountDatabase extends RoomDatabase {
     public abstract AccountDao accountDao();
 

@@ -11,7 +11,7 @@ public class Steam extends Activity {
 
     // The string will appear to the user in the login screen
     // you can put your app's name
-    final String REALM_PARAM = "Addmeon";
+    final String REALM_PARAM = "BC00C8C079B93F8279D259E567145E07";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
