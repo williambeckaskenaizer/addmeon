@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -20,6 +21,7 @@ public class Steam extends Activity {
 
     final String REALM_PARAM = "whatever";
     AccountDatabase db;
+    String urlString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,21 +36,26 @@ public class Steam extends Activity {
         webView.loadUrl("https://steamcommunity.com/login/home/");
         setContentView(webView);
 
-        String urlString = webView.getUrl();
+        urlString = webView.getUrl();
         String accountName;
-        if(urlString.contains("steamcommunity.com/id/")){
-            accountName = urlString.substring(26);
-            Account steamAccount = new Account(accountName + " - Steam");
-            db.accountDao().insert(steamAccount);
-            webView.destroy();
-            Intent intent = new Intent(Steam.this, HomeScreen.class);
-            startActivity(intent);
-        }
+        accountName = urlString.substring(26);
+        Account steamAccount = new Account(accountName + " - Steam" );
+        db.accountDao().insert(steamAccount);
+
+            if (webView.getUrl().contains("steamcommunity.com/id/" )) {
+
+
+                webView.destroy();
+                Intent intent = new Intent(Steam.this, HomeScreen.class);
+                startActivity(intent);
+            }
 
         final Activity activity = this;
 
     }
 }
+
+
 
 // webView.setWebViewClient(new WebViewClient()
 //         {
