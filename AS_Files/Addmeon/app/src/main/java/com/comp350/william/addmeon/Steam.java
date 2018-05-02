@@ -17,6 +17,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+
 import java.net.URL;
 import java.util.Set;
 
@@ -25,7 +26,7 @@ public class Steam extends AppCompatActivity {
     // The string will appear to the user in the login screen
     // you can put your app's name
 
-    final String REALM_PARAM = "whatever";
+    final String REALM_PARAM = "id";
     AccountDatabase db;
     String urlString;
 
@@ -39,24 +40,48 @@ public class Steam extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webView.loadUrl("https://steamcommunity.com/login/home/");
+        //webView.loadUrl("https://steamcommunity.com/login/home/");
         setContentView(webView);
-        final Fragment homefragment = new HomeFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
+
+
+        String requestedUrl = "https://steamcommunity.com/openid/login?" +
+        "openid.claimed_id=http://specs.openid.net/auth/2.0/identifier_select&" +
+        "openid.identity=http://specs.openid.net/auth/2.0/identifier_select&" +
+        "openid.mode=checkid_setup&" +
+        "openid.ns=http://specs.openid.net/auth/2.0&" +
+        "openid.realm=https://" + REALM_PARAM + "&" +
+        "openid.return_to=https://" + REALM_PARAM + "/signin/";
+
+
+
+        webView.loadUrl(requestedUrl);
 
 
         webView.setWebViewClient(new WebViewClient()
         {
             @Override
-            public void onPageStarted(WebView view, String url, Bitmap favicon){
+            public void onPageFinished(WebView view, String url)
+            {
+                /* This call inject JavaScript into the page which just finished loading. */
+                webView.loadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+                
+            }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
-                String[] separated = url.split("/");
-                if (separated[3].equals("id")) {
-                    Account steamAccount = new Account(separated[4] + " - Steam" );
-                    db.accountDao().insert(steamAccount);
-                    finish();
-                }
 
+                setTitle(url);
+                Uri Url = Uri.parse(url);
+
+
+                if (Url.getAuthority().equals(REALM_PARAM.toLowerCase())) {
+                    Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
+
+                    String userId = userAccountUrl.getLastPathSegment();
+
+                    webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
+
+                }
             }
         });
 
