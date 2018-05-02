@@ -4,7 +4,7 @@ package com.comp350.william.addmeon;
 
 
 
-import android.app.FragmentManager;
+
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
@@ -23,11 +23,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -123,7 +125,7 @@ public class HomeScreen extends AppCompatActivity {
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.menu_home, fragment);
+        transaction.replace(R.id.constraint_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }
@@ -137,12 +139,18 @@ public class HomeScreen extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.menu_home:
                     toolbar.setTitle("Home");
+                    fragment = new HomeFragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.menu_scan:
                     toolbar.setTitle("Scan");
+                    fragment = new Generate_Fragment();
+                    loadFragment(fragment);
                     return true;
                 case R.id.menu_profile:
                     toolbar.setTitle("Profile");
+                    fragment = new ProfileFragment();
+                    loadFragment(fragment);
                     return true;
             }
             return false;
@@ -154,7 +162,7 @@ public class HomeScreen extends AppCompatActivity {
         if (fragment == null)
             return;
 
-        FragmentManager fragmentManager = getFragmentManager();
+        FragmentManager fragmentManager = getSupportFragmentManager();
         if (fragmentManager != null) {
             FragmentTransaction ft = fragmentManager.beginTransaction();
             if (ft != null) {
@@ -175,7 +183,7 @@ public class HomeScreen extends AppCompatActivity {
                 break;
             case R.id.menu_profile:
                 // Action to perform when Account Menu item is selected.
-                pushFragment(new ProfilePage());
+                pushFragment(new ProfileFragment());
                 break;
         }
     }

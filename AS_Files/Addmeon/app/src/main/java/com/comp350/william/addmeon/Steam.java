@@ -2,11 +2,15 @@ package com.comp350.william.addmeon;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -14,7 +18,7 @@ import android.webkit.WebViewClient;
 
 import java.net.URL;
 
-public class Steam extends Activity {
+public class Steam extends AppCompatActivity {
 
     // The string will appear to the user in the login screen
     // you can put your app's name
@@ -35,20 +39,26 @@ public class Steam extends Activity {
         webSettings.setJavaScriptEnabled(true);
         webView.loadUrl("https://steamcommunity.com/login/home/");
         setContentView(webView);
-
-        urlString = webView.getUrl();
-        String accountName;
-        accountName = urlString.substring(26);
-        Account steamAccount = new Account(accountName + " - Steam" );
-        db.accountDao().insert(steamAccount);
-
-            if (webView.getUrl().contains("steamcommunity.com/id/" )) {
+        final Fragment homefragment = new HomeFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
 
 
-                webView.destroy();
-                Intent intent = new Intent(Steam.this, HomeScreen.class);
-                startActivity(intent);
+        webView.setWebViewClient(new WebViewClient()
+        {
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon){
+                super.onPageStarted(view, url, favicon);
+                String[] separated = url.split("/");
+                if (separated[3].equals("id")) {
+                    Account steamAccount = new Account(separated[4] + " - Steam" );
+                    db.accountDao().insert(steamAccount);
+                    finish();
+                }
+
             }
+        });
+
+
 
         final Activity activity = this;
 
