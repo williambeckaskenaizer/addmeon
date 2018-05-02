@@ -42,7 +42,9 @@
         <activity android:name=".AccountSignIn" />
         <activity android:name=".NewAccount" />
         <activity android:name=".blank" />
-        <activity android:name=".Generate" />
+        <activity
+            android:name=".Generate"
+            android:theme="@style/AppTheme.transparent"/>
         <activity
             android:name=".Scan"
             android:screenOrientation="portrait"

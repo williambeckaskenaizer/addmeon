@@ -101,8 +101,10 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_dashboard:
                     toolbar.setTitle("Scan");
-                    fragment = new Generate_Fragment();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
+                    //fragment = new Generate_Fragment();
+                    //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
+                    Intent INTENT = new Intent(MainActivity.this, Scan.class);
+                    startActivity(INTENT);
                     //loadFragment(fragment);
                     return true;
                 case R.id.navigation_notifications:

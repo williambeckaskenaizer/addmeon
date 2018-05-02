@@ -19,6 +19,8 @@ import android.widget.ImageButton;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 import static com.comp350.william.addmeon.MainActivity.NEW_ACCOUNT_ACTIVITY_REQUEST_CODE;
 
 public class HomeFragment extends Fragment {
@@ -65,6 +67,13 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        CircleImageView image = view.findViewById(R.id.circleImageView);
+        image.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                generate_display_qr();
+            }
+        });
+
         Button nukeButton = view.findViewById(R.id.nukeAccountListButton);
         nukeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -84,14 +93,15 @@ public class HomeFragment extends Fragment {
         db.accountDao().nukeAccountList();
     }
 
+    public void generate_display_qr(){
+        Intent INTENT = new Intent(getActivity(), Generate.class);
+        startActivity(INTENT);
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
     }
-
-
-
-
 
 }
 
