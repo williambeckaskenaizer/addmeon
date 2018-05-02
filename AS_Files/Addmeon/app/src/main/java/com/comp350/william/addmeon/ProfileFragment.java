@@ -26,8 +26,8 @@ public class ProfileFragment extends Fragment {
         eraseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 new AlertDialog.Builder(getContext())
-                        .setTitle("title")
-                        .setMessage("message")
+                        .setTitle("Erase all data?")
+                        .setMessage("This will remove all the accounts you've added.")
                         .setPositiveButton(android.R.string.ok, null)
                         .setNegativeButton(android.R.string.no, null)
                         .show();
