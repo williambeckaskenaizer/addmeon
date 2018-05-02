@@ -35,6 +35,8 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.home_screen, container, false);
 
+
+
         db = AccountDatabase.getDatabase(view.getContext());
         super.onCreate(savedInstanceState);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
@@ -46,9 +48,11 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter( adapter );
 
         mAccountViewModel.getAllAccounts().observe(this, new Observer<List<Account>>() {
             @Override

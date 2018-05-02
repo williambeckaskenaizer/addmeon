@@ -8,11 +8,19 @@ import android.arch.persistence.room.DatabaseConfiguration;
 import android.arch.persistence.room.InvalidationTracker;
 import android.content.Intent;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -26,85 +34,114 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    private AccountDao accountDao;
-    private AccountDatabase db;
-    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
-    private AccountViewModel mAccountViewModel;
+
     public static final int NEW_ACCOUNT_ACTIVITY_REQUEST_CODE = 1;
+    private ActionBar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setupNavigationView();
+
         super.onCreate(savedInstanceState);
-        Intent intent = new Intent(MainActivity.this, HomeScreen.class);
-        startActivity(intent);
-        finish();
-    }
-
-
-    public void initialLogin(View view) {
-        setContentView(R.layout.initial_login_3);
-
-    }
-
-    public void changeImage(View view) {
-        ImageButton imgButton = (ImageButton)findViewById(R.id.imageButton);
-        imgButton.setBackgroundResource(R.drawable.cheeto);
-    }
-
-    public void displayQR(View view) {
-        setContentView(R.layout.display_qr_code);
-    }
-
-    public void profile(View view) {
-        setContentView(R.layout.profile_page);
-    }
-
-    //public void goBack(View view) { super.onBackPressed(); }
-
-    public void scan(View view) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, 0);
-    }
-
-    public void profileSave(View view)
-    {
-        Context context = getApplicationContext();
-        CharSequence text = "Saved Changes";
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-    }
-
-    public void deleteAccount(View view)
-    {
-        setContentView(R.layout.delete_profile);
-    }
-
-    public void deleteAccountYes(View view)
-    {
-
         setContentView(R.layout.activity_main);
+
+        //Nav bar stuff
+        toolbar = getSupportActionBar();
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        toolbar.setTitle("Addmeon");
+        loadFragment(new HomeFragment());
+        // end nav bar stuff
+
     }
 
-    public void onActivityResult(int requestCode, int resultCode, Intent intent) {
+    private void setupNavigationView() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        if (bottomNavigationView != null) {
 
-        super.onActivityResult(requestCode, resultCode, intent);
+            // Select first menu item by default and show Fragment accordingly.
+            Menu menu = bottomNavigationView.getMenu();
+            selectFragment(menu.getItem(0));
 
-        if (requestCode == NEW_ACCOUNT_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
-            Account account = new Account(intent.getStringExtra(NewAccount.EXTRA_REPLY));
-            mAccountViewModel.insert(account);
-        } else {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show();
+            // Set action to perform when any menu-item is selected.
+            bottomNavigationView.setOnNavigationItemSelectedListener(
+                    new BottomNavigationView.OnNavigationItemSelectedListener() {
+                        @Override
+                        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                            selectFragment(item);
+                            return false;
+                        }
+                    });
         }
     }
 
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_container, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
 
-    public void addRoblox(View view)
-    {
-        setContentView(R.layout.add_account);
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.menu_home:
+                    toolbar.setTitle("Home");
+                    fragment = new HomeFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.menu_scan:
+                    toolbar.setTitle("Scan");
+                    fragment = new Generate_Fragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.menu_profile:
+                    toolbar.setTitle("Profile");
+                    fragment = new ProfileFragment();
+                    loadFragment(fragment);
+                    return true;
+            }
+            return false;
+        }
+    };
+
+    protected void pushFragment(Fragment fragment) {
+        if (fragment == null)
+            return;
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        if (fragmentManager != null) {
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+            if (ft != null) {
+                ft.replace(R.id.frame_container, fragment);
+                ft.commit();
+            }
+        }
+    }
+
+    protected void selectFragment(MenuItem item) {
+
+        item.setChecked(true);
+
+        switch (item.getItemId()) {
+            case R.id.navigation_home:
+                // Action to perform when Home Menu item is selected.
+                pushFragment(new HomeFragment());
+                break;
+            case R.id.navigation_dashboard:
+                // Action to perform when Account Menu item is selected.
+                pushFragment(new ProfileFragment());
+                break;
+        }
     }
 }
+
+
