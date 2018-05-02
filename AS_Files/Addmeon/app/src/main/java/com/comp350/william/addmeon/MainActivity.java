@@ -93,17 +93,19 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
             switch (item.getItemId()) {
-                case R.id.menu_home:
+                case R.id.navigation_home:
                     toolbar.setTitle("Home");
                     fragment = new HomeFragment();
-                    loadFragment(fragment);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
+                    //loadFragment(fragment);
                     return true;
-                case R.id.menu_scan:
+                case R.id.navigation_dashboard:
                     toolbar.setTitle("Scan");
                     fragment = new Generate_Fragment();
-                    loadFragment(fragment);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
+                    //loadFragment(fragment);
                     return true;
-                case R.id.menu_profile:
+                case R.id.navigation_notifications:
                     toolbar.setTitle("Profile");
                     fragment = new ProfileFragment();
                     loadFragment(fragment);

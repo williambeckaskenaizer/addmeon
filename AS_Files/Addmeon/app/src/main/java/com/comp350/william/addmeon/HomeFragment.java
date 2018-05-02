@@ -35,14 +35,10 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.home_screen, container, false);
 
-
-
         db = AccountDatabase.getDatabase(view.getContext());
         super.onCreate(savedInstanceState);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
 
-
-        inflater.inflate(R.layout.home_screen, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         final AccountListAdapter adapter = new AccountListAdapter(getContext());
         recyclerView.setAdapter(adapter);
