@@ -1,14 +1,18 @@
 package com.comp350.william.addmeon;
 
-import android.app.Fragment;
+
+
+
+
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +23,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
+
 import java.util.List;
 
 import static com.comp350.william.addmeon.MainActivity.NEW_ACCOUNT_ACTIVITY_REQUEST_CODE;
@@ -28,16 +42,31 @@ public class HomeScreen extends AppCompatActivity {
     private AccountDatabase db;
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private AccountViewModel mAccountViewModel;
+    private ActionBar toolbar;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         setupNavigationView();
 
+
         db = AccountDatabase.getDatabase(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_screen);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
+
+        //Nav bar stuff
+        toolbar = getSupportActionBar();
+
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        toolbar.setTitle("Addmeon");
+        loadFragment(new HomeFragment());
+        // end nav bar stuff
+
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final AccountListAdapter adapter = new AccountListAdapter(this);
@@ -91,6 +120,34 @@ public class HomeScreen extends AppCompatActivity {
                     });
         }
     }
+    private void loadFragment(Fragment fragment) {
+        // load fragment
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.menu_home, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment;
+            switch (item.getItemId()) {
+                case R.id.menu_home:
+                    toolbar.setTitle("Home");
+                    return true;
+                case R.id.menu_scan:
+                    toolbar.setTitle("Scan");
+                    return true;
+                case R.id.menu_profile:
+                    toolbar.setTitle("Profile");
+                    return true;
+            }
+            return false;
+        }
+    };
 
 
     protected void pushFragment(Fragment fragment) {
