@@ -15,10 +15,8 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import java.net.URL;
-import java.util.Set;
 
 public class Steam extends AppCompatActivity {
 
