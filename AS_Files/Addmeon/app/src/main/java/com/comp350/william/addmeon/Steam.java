@@ -2,6 +2,7 @@ package com.comp350.william.addmeon;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,6 +11,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -50,8 +52,6 @@ public class Steam extends AppCompatActivity {
         "openid.realm=https://" + REALM_PARAM + "&" +
         "openid.return_to=https://" + REALM_PARAM + "/signin/";
 
-
-
         webView.loadUrl(requestedUrl);
 
 
@@ -77,7 +77,7 @@ public class Steam extends AppCompatActivity {
 
                     String userId = userAccountUrl.getLastPathSegment();
 
-                    webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
+                    webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId + "?xml=1");
 
                 }
             }
@@ -87,8 +87,10 @@ public class Steam extends AppCompatActivity {
 
         final Activity activity = this;
 
+
     }
 }
+
 
 
 
