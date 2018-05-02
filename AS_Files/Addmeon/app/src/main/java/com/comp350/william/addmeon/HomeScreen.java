@@ -166,7 +166,7 @@ public class HomeScreen extends AppCompatActivity {
         if (fragmentManager != null) {
             FragmentTransaction ft = fragmentManager.beginTransaction();
             if (ft != null) {
-                ft.replace(R.id.menu_home, fragment);
+                ft.replace(R.id.constraint_container, fragment);
                 ft.commit();
             }
         }
@@ -177,11 +177,11 @@ public class HomeScreen extends AppCompatActivity {
         item.setChecked(true);
 
         switch (item.getItemId()) {
-            case R.id.menu_home:
+            case R.id.navigation_home:
                 // Action to perform when Home Menu item is selected.
                 pushFragment(new HomeFragment());
                 break;
-            case R.id.menu_profile:
+            case R.id.navigation_dashboard:
                 // Action to perform when Account Menu item is selected.
                 pushFragment(new ProfileFragment());
                 break;
