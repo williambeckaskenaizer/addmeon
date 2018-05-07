@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -19,15 +20,18 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
 
     class AccountViewHolder extends RecyclerView.ViewHolder {
         private final TextView accountItemView;
+        private ImageView serviceIcon;
 
         private AccountViewHolder(View itemView) {
             super(itemView);
             accountItemView = itemView.findViewById(R.id.textView);
+
+            serviceIcon = (ImageView) itemView.findViewById(R.id.steam_icon);
         }
     }
 
     private final LayoutInflater mInflater;
-    private List<Account> mAccounts; // Cached copy of words
+    private List<Account> mAccounts; // Cached copy of accounts
 
     AccountListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
 
@@ -44,7 +48,7 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             holder.accountItemView.setText(current.getAccount());
         } else {
             // Covers the case of data not being ready yet.
-            holder.accountItemView.setText("No Account");
+            holder.accountItemView.setText("No Accounts");
         }
     }
 

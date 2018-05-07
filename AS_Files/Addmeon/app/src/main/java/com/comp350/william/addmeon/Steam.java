@@ -124,6 +124,9 @@ public class Steam extends AppCompatActivity {
 //                        }
 //                    });
 
+                    webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
+
+
                 }
         }
         });
