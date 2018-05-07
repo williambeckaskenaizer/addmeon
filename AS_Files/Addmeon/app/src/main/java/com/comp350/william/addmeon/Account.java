@@ -15,23 +15,31 @@ public class Account {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "account")
-    private String mAccount;
+    private String mAccountName;
+    private String mAccountLink;
+    private String mAccountType;
 
-//    @ColumnInfo(name = "type")
-//    private String mAccountType;
 
-    public String getAccount(){
-        return this.mAccount;
+    public String getAccountName(){
+        return this.mAccountName;
     }
 
-//    public String getAccountType() {
-//        return this.mAccountType;
-//    }
-
-    public Account(@NonNull String account/*, @NonNull String accountType*/) {
-        this.mAccount = account;
-//        this.mAccountType = accountType;
+    public String getAccountLink(){
+        return this.mAccountLink;
     }
+
+    public String getAccountType(){
+        return this.mAccountType;
+    }
+
+
+    public Account(@NonNull String accountName, @NonNull String accountLink, @NonNull String accountType) {
+        this.mAccountName = accountName;
+        this.mAccountLink = accountLink;
+        this.mAccountType = accountType;
+    }
+
+
 
 
 

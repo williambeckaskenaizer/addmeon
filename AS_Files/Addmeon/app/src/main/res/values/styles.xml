@@ -15,12 +15,19 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--<style name="AppTheme.transparent2" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>-->
+
     <style name="mySpinnerItemStyle" parent="Base.Widget.AppCompat.Spinner">
         <item name="android:textColor">@color/my_spinner_text_color</item>
     </style>
     <style name="account_title">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">26dp</item>
+        <item name="android:layout_height">186dp</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textStyle">normal</item>
         <item name="android:layout_marginBottom">6dp</item>
