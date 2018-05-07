@@ -89,6 +89,9 @@ public class Steam extends AppCompatActivity {
                 if (Url.getAuthority().equals(REALM_PARAM.toLowerCase())) {
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
                     userId = userAccountUrl.getLastPathSegment();
+                    String accountType = "Steam";
+                    Account steamAccount = new Account(userId, userAccountUrl.toString(), accountType);
+                    db.accountDao().insert(steamAccount);
 
 //                    AsyncTask.execute(new Runnable() {
 //                        @Override

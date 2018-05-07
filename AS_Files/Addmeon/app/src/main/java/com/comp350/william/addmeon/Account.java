@@ -20,8 +20,16 @@ public class Account {
     private String mAccountType;
 
 
-    public String getAccount(){
+    public String getAccountName(){
         return this.mAccountName;
+    }
+
+    public String getAccountLink(){
+        return this.mAccountLink;
+    }
+
+    public String getAccountType(){
+        return this.mAccountType;
     }
 
 

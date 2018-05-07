@@ -45,7 +45,7 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
     public void onBindViewHolder(AccountViewHolder holder, int position) {
         if (mAccounts != null) {
             Account current = mAccounts.get(position);
-            holder.accountItemView.setText(current.getAccount());
+            holder.accountItemView.setText(current.getAccountName());
         } else {
             // Covers the case of data not being ready yet.
             holder.accountItemView.setText("No Accounts");
