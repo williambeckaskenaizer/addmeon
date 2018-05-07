@@ -20,7 +20,6 @@ import android.webkit.WebViewClient;
 
 
 import java.net.URL;
-import java.util.Scanner;
 
 public class Steam extends AppCompatActivity {
 
@@ -80,8 +79,6 @@ public class Steam extends AppCompatActivity {
                     String urlString = "https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId;
 
                     webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
-                    URL url2 = new URL(urlString);
-                    Scanner s = new Scanner()
 
                 }
             }
