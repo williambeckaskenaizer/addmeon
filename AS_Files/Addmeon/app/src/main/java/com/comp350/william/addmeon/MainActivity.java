@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     toolbar.setTitle("Scan");
                     //fragment = new Generate_Fragment();
                     //getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
-                    Intent INTENT = new Intent(MainActivity.this, Scan.class);
+                    Intent INTENT = new Intent(MainActivity.this, Scan_And_Generate_Popup.class);
                     startActivity(INTENT);
                     //loadFragment(fragment);
                     return true;
