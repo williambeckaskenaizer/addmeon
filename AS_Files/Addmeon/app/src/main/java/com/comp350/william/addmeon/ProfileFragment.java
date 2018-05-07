@@ -37,20 +37,20 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        CircleImageView image = view.findViewById(R.id.circleImageView);
+        /*CircleImageView image = view.findViewById(R.id.circleImageView);
         image.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 generate_display_qr();
             }
-        });
+        });*/
 
         return view;
     }
 
-    public void generate_display_qr(){
+    /*public void generate_display_qr(){
         Intent INTENT = new Intent(getActivity(), Generate.class);
         startActivity(INTENT);
-    }
+    }*/
 
 }
 

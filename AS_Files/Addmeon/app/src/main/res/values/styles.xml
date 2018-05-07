@@ -15,6 +15,13 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!--<style name="AppTheme.transparent2" parent="Base.Theme.AppCompat.Light.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>-->
+
     <style name="mySpinnerItemStyle" parent="Base.Widget.AppCompat.Spinner">
         <item name="android:textColor">@color/my_spinner_text_color</item>
     </style>
