@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.StrictMode;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -23,11 +24,14 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.net.ssl.HttpsURLConnection;
@@ -68,6 +72,12 @@ public class Steam extends AppCompatActivity {
         "openid.realm=https://" + REALM_PARAM + "&" +
         "openid.return_to=https://" + REALM_PARAM + "/signin/";
         webView.loadUrl(requestedUrl);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
         //"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId
         webView.setWebViewClient(new WebViewClient()
         {
@@ -89,48 +99,34 @@ public class Steam extends AppCompatActivity {
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
                     userId = userAccountUrl.getLastPathSegment();
                     String accountType = "Steam";
-                    Account steamAccount = new Account(userId, userAccountUrl.toString(), accountType);
-                    db.accountDao().insert(steamAccount);
+                    try {
+                        URL fuckingURL = new URL("https://steamcommunity.com/profiles/" + userId);
 
-//                    AsyncTask.execute(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            try {
-//
-//                                URL githubEndpoint = new URL("https://api.steampowered.com");
-//
-//                                // Create connection
-//                                HttpsURLConnection myConnection = (HttpsURLConnection) githubEndpoint.openConnection();
-//                                InputStream responseBody = myConnection.getInputStream();
-//                                InputStreamReader responseBodyReader = new InputStreamReader(responseBody, "UTF-8");
-//                                JsonReader jsonReader = new JsonReader(responseBodyReader);
-//                                jsonReader.beginObject(); // Start processing the JSON object
-//                                while (jsonReader.hasNext()) { // Loop through all keys
-//                                    String key = jsonReader.nextName(); // Fetch the next key
-//                                    if (key.equals("personaname:")) { // Check if desired key
-//                                        // Fetch the value as a String
-//                                        String value = jsonReader.nextString();
-//
-//                                        // Do something with the value
-//                                        setUserId(value);
-//                                        // ...
-//
-//                                        break; // Break out of the loop
-//                                    } else {
-//                                        jsonReader.skipValue(); // Skip values of other keys
-//                                    }
-//                                }
-//                            } catch (IOException ex) {
-//                                System.err.println("what did you DO?");
-//                            }
-//                        }
-//                    });
+                        // Connect to the URL using java's native library
+                        HttpURLConnection request = (HttpURLConnection) fuckingURL.openConnection();
+                        request.connect();
 
-                    webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
+                        // Convert to a JSON object to print data
+                        JsonParser jp = new JsonParser(); //from gson
+                        InputStreamReader stream = new InputStreamReader((InputStream) request.getContent());
+                        JsonObject root = jp.parse(stream).getAsJsonObject();
+                        JsonObject response = root.get("response").getAsJsonObject();
+                        JsonObject player = response.get("players").getAsJsonArray().get(0).getAsJsonObject();
+
+                        Account steamAccount = new Account(player.get("personaname").getAsString(), userAccountUrl.toString(), accountType);
+                        Log.d("User Account URL", userAccountUrl.toString());
+                        db.accountDao().insert(steamAccount);
+                    } catch (IOException e){
+                        throw new RuntimeException(e);
+                    }
+
+                    //webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
 
                 }
         }
         });
+
+
     }
 }
 
