@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Addmeon");
-        loadFragment(new HomeFragment());
+        loadFragment(new TitleFragment());
         // end nav bar stuff
 
     }
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment fragment;
+
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     toolbar.setTitle("Home");
