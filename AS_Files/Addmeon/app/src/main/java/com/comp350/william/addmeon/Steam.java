@@ -24,9 +24,13 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+
+import org.json.*;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,6 +49,7 @@ public class Steam extends AppCompatActivity {
     AccountDatabase db;
     String urlString;
     String userId;
+    String key = "BC00C8C079B93F8279D259E567145E07";
 
     public void setUserId(String newUserId){
         this.userId = newUserId;
@@ -100,7 +105,9 @@ public class Steam extends AppCompatActivity {
                     userId = userAccountUrl.getLastPathSegment();
                     String accountType = "Steam";
                     try {
-                        URL fuckingURL = new URL("https://steamcommunity.com/profiles/" + userId);
+                        URL fuckingURL = new URL("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/"
+                                + "?key=" + key
+                                + "&steamids=" + userId);
 
                         // Connect to the URL using java's native library
                         HttpURLConnection request = (HttpURLConnection) fuckingURL.openConnection();
@@ -116,6 +123,7 @@ public class Steam extends AppCompatActivity {
                         Account steamAccount = new Account(player.get("personaname").getAsString(), userAccountUrl.toString(), accountType);
                         Log.d("User Account URL", userAccountUrl.toString());
                         db.accountDao().insert(steamAccount);
+                        finish();
                     } catch (IOException e){
                         throw new RuntimeException(e);
                     }
