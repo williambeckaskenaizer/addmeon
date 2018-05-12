@@ -1,74 +1,105 @@
-//package com.comp350.william.addmeon;
-//
-//import android.content.Context;
-//import android.support.test.InstrumentationRegistry;
-//import android.support.test.runner.AndroidJUnit4;
-//
-//import org.junit.Test;
-//import org.junit.runner.RunWith;
-//
-//import java.util.concurrent.CountDownLatch;
-//import java.util.concurrent.TimeUnit;
-//
-//import il.co.galex.battlenet.api.d3.model.account.User;
-//import il.co.galex.battlenet.api.d3.model.common.BattleTag;
-//import il.co.galex.battlenet.common.model.Region;
-//import il.co.galex.battlenet.api.d3.network.CommunityOAuthProfileAPI;
-//import retrofit2.Call;
-//import retrofit2.Callback;
-//import retrofit2.Response;
-//
-//import static junit.framework.Assert.assertNotNull;
-//import static junit.framework.Assert.assertTrue;
-//
-///**
-// * Tests of requests to the D3 Community API
-// * @author Alexander Gherschon
-// */
-//
-//@RunWith(AndroidJUnit4.class)
-//public class CommunityOAuthProfileApiTest {
-//
-//    private static final String ACCESS_TOKEN = "nestn9uhfgzpj953j3xpfpnw"; // problematic cause the code expires after 30 days
-//
-//    private static final BattleTag BATTLE_TAG = new BattleTag("Ahava", 2406);
-//
-//    @Test
-//    public void getUserSync() throws Exception {
-//
-//        Context context = InstrumentationRegistry.getTargetContext();
-//
-//        User user = CommunityOAuthProfileAPI.getUser(context, Region.EU, ACCESS_TOKEN);
-//        assertNotNull(user);
-//        assertTrue(user.getBattleTag().equals(BATTLE_TAG));
-//    }
-//
-//    @Test
-//    public void getUserAsync() throws Exception {
-//
-//        final CountDownLatch lock = new CountDownLatch(1);
-//        final Context context = InstrumentationRegistry.getTargetContext();
-//
-//        final User[] users = new User[1];
-//
-//        CommunityOAuthProfileAPI.getUser(context, Region.EU, ACCESS_TOKEN, new Callback<User>() {
-//            @Override
-//            public void onResponse(Call<User> call, Response<User> response) {
-//
-//                users[0] = response.body();
-//                lock.countDown();
-//            }
-//
-//            @Override
-//            public void onFailure(Call<User> call, Throwable t) {
-//
-//                lock.countDown();
-//            }
-//        });
-//
-//        lock.await(2000, TimeUnit.MILLISECONDS);
-//
-//        assertNotNull(users[0]);
-//        assertTrue(BATTLE_TAG.equals(users[0].getBattleTag()));
-//    }
-//}
+package com.comp350.william.addmeon;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import com.dementh.lib.battlenet_oauth2.BnConstants;
+import com.dementh.lib.battlenet_oauth2.connections.BnOAuth2Params;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class Battlenet extends AppCompatActivity{
+
+    AccountDatabase db;
+    String urlString;
+    String userId;
+
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        db = AccountDatabase.getDatabase(getApplicationContext());
+
+
+
+
+        final WebView webView = new WebView(this);
+        webView.getSettings().setJavaScriptEnabled(true);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        //webView.loadUrl("https://steamcommunity.com/login/home/");
+        setContentView(webView);
+
+
+        String requestedUrl = "https://us.battle.net/oauth/authorize";
+        webView.loadUrl(requestedUrl);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+
+        //"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId
+        webView.setWebViewClient(new WebViewClient()
+        {
+            @Override
+            public void onPageFinished(WebView view, String url)
+            {
+                /* This call inject JavaScript into the page which just finished loading. */
+                Uri Url = Uri.parse(url);
+
+            }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                super.onPageStarted(view, url, favicon);
+
+                setTitle(url);
+                Uri Url = Uri.parse(url);
+
+
+                    try {
+                        URL fuckingURL = new URL("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/"
+                                + "?key="
+                                + "&steamids=" + userId);
+
+                        // Connect to the URL using java's native library
+                        HttpURLConnection request = (HttpURLConnection) fuckingURL.openConnection();
+                        request.connect();
+
+                        // Convert to a JSON object to print data
+//                        JsonParser jp = new JsonParser(); //from gson
+//                        InputStreamReader stream = new InputStreamReader((InputStream) request.getContent());
+//                        JsonObject root = jp.parse(stream).getAsJsonObject();
+//                        JsonObject response = root.get("response").getAsJsonObject();
+//                        JsonObject player = response.get("players").getAsJsonArray().get(0).getAsJsonObject();
+
+//                        Account steamAccount = new Account(player.get("personaname").getAsString(), userAccountUrl.toString(), accountType);
+//                        Log.d("User Account URL", userAccountUrl.toString());
+                        //db.accountDao().insert(steamAccount);
+                        //finish();
+                    } catch (IOException e){
+                        throw new RuntimeException(e);
+                    }
+
+                    //webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
+
+            }
+        });
+
+
+    }
+}
+
