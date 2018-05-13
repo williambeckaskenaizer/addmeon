@@ -14,7 +14,7 @@
         style="@style/account_title"
         android:layout_width="300dp"
         android:layout_height="36dp"
-        android:background="@android:color/black"
+        android:background="@null"
         android:textColor="@color/white" />
 
 </LinearLayout>

@@ -49,6 +49,7 @@ public class NewAccount extends AppCompatActivity {
         final ImageButton steamButton = findViewById(R.id.steamButton);
         final ImageButton xboxButton = findViewById(R.id.xboxButton);
         final ImageButton battlenetButton = findViewById(R.id.battlenetButton);
+        final ImageButton psnButton = findViewById(R.id.psnButton);
         //Add steam account
         steamButton.setOnClickListener(new View.OnClickListener() {
 
@@ -89,6 +90,16 @@ public class NewAccount extends AppCompatActivity {
                 String redirectUrl = "https://localhost";
                 bnOAuth2Params = new BnOAuth2Params(key, secret, BnConstants.ZONE_UNITED_STATES, redirectUrl, appName);
                 startOauthFlow(bnOAuth2Params);
+                finish();
+            }
+        });
+        psnButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                String accountType = "PSN";
+                String accountLink = "";
+                Intent intent = new Intent(NewAccount.this, PlaystationNetwork.class);
+                startActivity(intent);
                 finish();
             }
         });

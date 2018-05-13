@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         toolbar.setTitle("Addmeon");
-        loadFragment(new TitleFragment());
+        loadFragment(new HomeFragment());
         // end nav bar stuff
 
     }

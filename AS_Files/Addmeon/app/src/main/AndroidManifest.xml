@@ -35,6 +35,9 @@
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
 
         <activity android:name=".AccountSignIn" />
         <activity android:name=".NewAccount" />
@@ -50,6 +53,7 @@
         <activity android:name=".Steam" />
         <activity android:name=".BattleNet" />
         <activity android:name=".ResultActivity" />
+        <activity android:name=".PlaystationNetwork"/>
 
     </application>
 

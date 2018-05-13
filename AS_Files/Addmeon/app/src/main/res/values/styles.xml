@@ -33,5 +33,17 @@
         <item name="android:layout_marginBottom">6dp</item>
         <item name="android:paddingLeft">8dp</item>
     </style>
+    <style name="todoDialogLight" parent="Theme.AppCompat.Light.Dialog">
+
+        <!-- Used for the buttons -->
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:textStyle">bold</item>
+        <!-- Used for the title and text -->
+        <item name="android:textColorPrimary">@color/red</item>
+        <!-- Used for the background -->
+        <!-- <item name="android:background">#4CAF50</item>-->
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 
 </resources>
