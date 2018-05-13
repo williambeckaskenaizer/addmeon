@@ -16,8 +16,6 @@ import java.util.List;
 
 public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.AccountViewHolder> {
 
-
-
     class AccountViewHolder extends RecyclerView.ViewHolder {
         private final TextView accountItemView;
         private ImageView serviceIcon;

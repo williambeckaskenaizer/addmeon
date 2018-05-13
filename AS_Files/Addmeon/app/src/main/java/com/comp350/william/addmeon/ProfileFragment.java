@@ -1,6 +1,7 @@
 package com.comp350.william.addmeon;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -28,29 +32,25 @@ public class ProfileFragment extends Fragment {
         final ImageButton eraseButton = view.findViewById(R.id.eraseAllData);
         eraseButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                new AlertDialog.Builder(getContext())
-                        .setTitle("Erase all data?")
-                        .setMessage("This will remove all the accounts you've added.")
-                        .setPositiveButton(android.R.string.ok, null)
-                        .setNegativeButton(android.R.string.no, null)
-                        .show();
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int choice) {
+                        switch (choice) {
+                            case DialogInterface.BUTTON_POSITIVE:
+                                db.accountDao().nukeAccountList();
+                                break;
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                break;
+                        }
+                    }
+                };
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext(), R.style.todoDialogLight);
+                builder.setMessage("Erase all accounts?")
+                        .setPositiveButton("Yes", dialogClickListener)
+                        .setNegativeButton("No", dialogClickListener).show();
             }
         });
-
-        /*CircleImageView image = view.findViewById(R.id.circleImageView);
-        image.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                generate_display_qr();
-            }
-        });*/
-
         return view;
     }
-
-    /*public void generate_display_qr(){
-        Intent INTENT = new Intent(getActivity(), Generate.class);
-        startActivity(INTENT);
-    }*/
-
 }
 
