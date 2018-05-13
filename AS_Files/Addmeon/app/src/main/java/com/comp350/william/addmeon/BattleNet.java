@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Battlenet extends AppCompatActivity {
+public class BattleNet extends AppCompatActivity {
 
     public static final int REST_BATTLETAG = 3;
 

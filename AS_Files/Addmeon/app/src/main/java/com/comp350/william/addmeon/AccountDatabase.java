@@ -15,7 +15,7 @@ import android.support.annotation.NonNull;
 /**
  * Created by william on 4/4/18.
  */
-@Database(entities = {Account.class}, version = 1)
+@Database(entities = {Account.class}, version = 1, exportSchema = false)
 @TypeConverters({Converters.class})
 abstract class AccountDatabase extends RoomDatabase {
     public abstract AccountDao accountDao();

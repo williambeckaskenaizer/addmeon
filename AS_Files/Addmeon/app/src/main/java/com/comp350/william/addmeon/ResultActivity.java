@@ -64,7 +64,7 @@ public class ResultActivity extends AppCompatActivity {
         Call<ResponseBody> call = null;
         try {
             switch (option) {
-                case Battlenet.REST_BATTLETAG:
+                case BattleNet.REST_BATTLETAG:
                     call = requestApiInterface.getBattlenetProfile(bnOAuth2Helper.getAccessToken());
                     break;
             }

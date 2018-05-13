@@ -48,7 +48,7 @@
             android:stateNotNeeded="true"
             tools:replace="android:screenOrientation" />
         <activity android:name=".Steam" />
-        <activity android:name=".Battlenet" />
+        <activity android:name=".BattleNet" />
         <activity android:name=".ResultActivity" />
 
     </application>
