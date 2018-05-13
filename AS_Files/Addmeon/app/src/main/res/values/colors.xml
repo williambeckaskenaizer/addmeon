@@ -8,4 +8,5 @@
     <color name="white">#FFF</color>
     <color name="black">#000</color>
     <color name="my_spinner_text_color">#FFFFFF</color>
+    <color name="blue">#3498DB</color>
 </resources>

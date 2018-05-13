@@ -22,6 +22,7 @@ import com.dementh.lib.battlenet_oauth2.activities.BnOAuthAccessTokenActivity;
 import com.dementh.lib.battlenet_oauth2.connections.BnOAuth2Helper;
 import com.dementh.lib.battlenet_oauth2.connections.BnOAuth2Params;
 
+import java.io.IOException;
 import java.util.List;
 
 public class NewAccount extends AppCompatActivity {
@@ -32,6 +33,7 @@ public class NewAccount extends AppCompatActivity {
     private AccountDao accountDao;
     private AccountDatabase db;
     private SharedPreferences sharedPreferences;
+    BnOAuth2Params bnOAuth2Params;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,9 +84,10 @@ public class NewAccount extends AppCompatActivity {
                 String accountType = "Battlenet";
                 String accountLink = "";
                 String key = "5v7d8kb32thge54rb6a9qkwncejb2z47";
+                String secret = "DukDC9BJxftx2A6ac6z3mSVy3GB7T8uN";
                 String appName = "Addmeon";
                 String redirectUrl = "https://localhost";
-                BnOAuth2Params bnOAuth2Params = new BnOAuth2Params(key, "Your client secret", BnConstants.ZONE_UNITED_STATES, redirectUrl, appName, "n/a");
+                bnOAuth2Params = new BnOAuth2Params(key, secret, BnConstants.ZONE_UNITED_STATES, redirectUrl, appName);
                 startOauthFlow(bnOAuth2Params);
                 finish();
             }
@@ -96,6 +99,14 @@ public class NewAccount extends AppCompatActivity {
         intent.putExtra(BnConstants.BUNDLE_BNPARAMS, bnOAuth2Params);
         // Send redirect Activity
         intent.putExtra(BnConstants.BUNDLE_REDIRECT_ACTIVITY, Battlenet.class);
+
         startActivity(intent);
+    }
+    public void clearCredentials(final BnOAuth2Params bnOAuth2Params)  {
+        try {
+            new BnOAuth2Helper(sharedPreferences, bnOAuth2Params).clearCredentials();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

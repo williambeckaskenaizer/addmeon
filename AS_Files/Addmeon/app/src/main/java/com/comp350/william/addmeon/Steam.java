@@ -119,7 +119,6 @@ public class Steam extends AppCompatActivity {
                         JsonObject root = jp.parse(stream).getAsJsonObject();
                         JsonObject response = root.get("response").getAsJsonObject();
                         JsonObject player = response.get("players").getAsJsonArray().get(0).getAsJsonObject();
-
                         Account steamAccount = new Account(player.get("personaname").getAsString(), userAccountUrl.toString(), accountType);
                         Log.d("User Account URL", userAccountUrl.toString());
                         db.accountDao().insert(steamAccount);
