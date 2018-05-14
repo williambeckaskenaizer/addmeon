@@ -41,6 +41,7 @@ public class Generate_Fragment extends Fragment {
     CircleImageView home_qrCode;
     //CircleImageView profile_qrCode;
     EditText mEditText;
+    String hardcode = "Steam>ReIativity>https://steamcommunity.com/profile/76561198042157467>Battlenet>Relativity#11414>https://masteroverwatch.com/profile/pc/global/Relativity-11414>Xbox>SonicOne2>https://xboxgamertag.com/search/SonicOne2>Playstation>Christilliam>https://psnprofiles.com>Christilliam>";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -53,13 +54,13 @@ public class Generate_Fragment extends Fragment {
 
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
 
-        db = AccountDatabase.getDatabase(view.getContext());
+        //db = AccountDatabase.getDatabase(view.getContext());
 
-        System.out.println(mAccountViewModel.getAllAccounts().toString());
+        //System.out.println(mAccountViewModel.getAllAccounts().toString());
 
-        /*encodeString += adapter.getAllAccountStrings();
+        //encodeString += adapter.getAllAccountStrings();
 
-        if(encodeString == "")
+        /*if(encodeString == "")
         {
             Toast.makeText(getContext(), "No Accounts", Toast.LENGTH_LONG).show();
             System.out.println("hit");
@@ -68,7 +69,7 @@ public class Generate_Fragment extends Fragment {
 
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
-            BitMatrix bitMatrix = multiFormatWriter.encode(db.accountDao().getAllAccounts().toString(), BarcodeFormat.QR_CODE,400,400);
+            BitMatrix bitMatrix = multiFormatWriter.encode(hardcode, BarcodeFormat.QR_CODE,400,400);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             qrCode.setImageBitmap(bitmap);
@@ -99,9 +100,9 @@ public class Generate_Fragment extends Fragment {
         mAccounts = accounts;
         AccountListAdapter test = new AccountListAdapter(getContext());
         test.notifyDataSetChanged();
-    }
+    }*/
 
-    public String getAccount(int position) {
+    /*public String getAccount(int position) {
 
         Account current = mAccounts.get(position);
 
