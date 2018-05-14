@@ -76,12 +76,12 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        Button nukeButton = view.findViewById(R.id.nukeAccountListButton);
+        /*Button nukeButton = view.findViewById(R.id.nukeAccountListButton);
         nukeButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 nukeAccountListButton();
             }
-        });
+        });*/
         return view;
 
     }

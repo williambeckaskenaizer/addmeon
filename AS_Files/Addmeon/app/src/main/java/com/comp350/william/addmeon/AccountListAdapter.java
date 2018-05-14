@@ -93,5 +93,35 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             return mAccounts.size();
         else return 0;
     }
+
+    public String getAllAccountStrings()
+    {
+        String account_string = "";
+
+        System.out.println(getItemCount());
+
+        for(int i = 0; i < getItemCount(); i++)
+        {
+           account_string += getAccountString(i);
+        }
+
+        return account_string;
+    }
+
+    public String getAccountString(int position) {
+
+        Account current = mAccounts.get(position);
+
+        String account;
+
+        if(current.getAccountType() == null || current.getAccountName() == null || current.getAccountLink() == null)
+        {
+            return null;
+        }
+
+        account = current.getAccountType() + "/" + current.getAccountName() + "/" + current.getAccountLink() + "/";
+
+        return account;
+    }
 }
 

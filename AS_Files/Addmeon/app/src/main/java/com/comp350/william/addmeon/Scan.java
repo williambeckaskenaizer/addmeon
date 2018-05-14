@@ -12,12 +12,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import java.util.List;
+
 
 /**
  * Created by ryan.santos175 on 4/16/18.
  */
 
 public class Scan extends AppCompatActivity {
+
+    List<Account> mAccounts;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,7 @@ public class Scan extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //AccountDatabase scanned_db = new AccountDatabase();
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if(result != null) {
             if(result.getContents() == null) {
@@ -44,7 +49,9 @@ public class Scan extends AppCompatActivity {
                 Log.d("MainActivity", "Scanned");
                 //TextView scanResult = (TextView)findViewById(R.id.scanned_text_view_id);
                 //scanResult.setText(result.getContents());
+                //setAccounts(result.getContents());
                 setContentView(R.layout.scanned_profile);
+
                 //Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }
         } else {
@@ -52,4 +59,9 @@ public class Scan extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+    /*void setAccounts(List<Account> accounts){
+        mAccounts = accounts;
+        //notifyDataSetChanged();
+    }*/
 }

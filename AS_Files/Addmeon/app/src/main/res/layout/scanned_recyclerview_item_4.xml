@@ -19,7 +19,7 @@
         android:background="@color/white" />
 
     <TextView
-        android:id="@+id/scanned_title"
+        android:id="@+id/scanned_title_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -29,15 +29,15 @@
 
 
     <TextView
-        android:id="@+id/scanned_genre"
+        android:id="@+id/scanned_genre_4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scanned_title"
+        android:layout_below="@+id/scanned_year_4"
         android:layout_centerHorizontal="true"
         android:textColor="#a8a8a8" />
 
     <TextView
-        android:id="@+id/scanned_year"
+        android:id="@+id/scanned_year_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
