@@ -106,7 +106,7 @@ public class NewAccount extends AppCompatActivity {
         // Send BnOAuth2Params
         intent.putExtra(BnConstants.BUNDLE_BNPARAMS, bnOAuth2Params);
         // Send redirect Activity
-        intent.putExtra(BnConstants.BUNDLE_REDIRECT_ACTIVITY, Battlenet.class);
+        intent.putExtra(BnConstants.BUNDLE_REDIRECT_ACTIVITY, BattleNet.class);
 
         startActivity(intent);
     }
