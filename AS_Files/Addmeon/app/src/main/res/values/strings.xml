@@ -11,7 +11,7 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_qr">QR Code</string>
-    <string name="menu_profile">Profile</string>
+    <string name="menu_profile">Settings</string>
     <string name="title_activity_initial_startup">InitialStartup</string>
 
     <string name="hint_word">Account...</string>
@@ -25,7 +25,7 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Scan</string>
-    <string name="title_notifications">Profile</string>
+    <string name="title_notifications">Settings</string>
 
     <!-- Buttons -->
     <string name="btn_login">Login</string>

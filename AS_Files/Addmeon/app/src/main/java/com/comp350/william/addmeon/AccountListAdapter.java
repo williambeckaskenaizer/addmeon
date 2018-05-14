@@ -1,6 +1,7 @@
 package com.comp350.william.addmeon;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,14 +18,15 @@ import java.util.List;
 public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.AccountViewHolder> {
 
     class AccountViewHolder extends RecyclerView.ViewHolder {
-        private final TextView accountItemView;
-        private ImageView serviceIcon;
+        protected final TextView accountItemView;
+        protected ImageView serviceIcon;
+        protected final TextView accountServiceName;
 
         private AccountViewHolder(View itemView) {
             super(itemView);
-            accountItemView = itemView.findViewById(R.id.textView);
-
-            serviceIcon = (ImageView) itemView.findViewById(R.id.steam_icon);
+            accountItemView = itemView.findViewById(R.id.title);
+            accountServiceName = itemView.findViewById(R.id.year);
+            //serviceIcon = (ImageView) itemView.findViewById(R.id.itemIcon);
         }
     }
 
@@ -44,6 +46,17 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
         if (mAccounts != null) {
             Account current = mAccounts.get(position);
             holder.accountItemView.setText(current.getAccountName());
+            holder.accountServiceName.setText(current.getAccountType());
+            if(current.getAccountType().equals("BATTLENET")){
+                holder.accountServiceName.setTextColor(Color.parseColor("#3498DB"));
+            }
+            if(current.getAccountType().equals("STEAM")){
+                holder.accountServiceName.setTextColor(Color.GRAY);
+            }
+            if(current.getAccountType().equals("PLAYSTATION")){
+                holder.accountServiceName.setTextColor(Color.CYAN);
+            }
+
         } else {
             // Covers the case of data not being ready yet.
             holder.accountItemView.setText("No Accounts");

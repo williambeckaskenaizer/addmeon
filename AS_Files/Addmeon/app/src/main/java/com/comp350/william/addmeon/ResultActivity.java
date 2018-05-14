@@ -80,7 +80,7 @@ public class ResultActivity extends AppCompatActivity {
                                 String Jarray = Jobject.getString("battletag");
                                 Log.d("IS THIS THE USERNAME PLEASE?", Jarray);
                                 String accountLink = "http://localhost";
-                                Account bNetAccount = new Account(Jarray, accountLink, "Battlenet");
+                                Account bNetAccount = new Account(Jarray, accountLink, "BATTLENET");
                                 db.accountDao().insert(bNetAccount);
                                 finish();
 

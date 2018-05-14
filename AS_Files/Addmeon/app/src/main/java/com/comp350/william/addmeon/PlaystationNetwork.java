@@ -47,7 +47,7 @@ public class PlaystationNetwork extends AppCompatActivity {
         doneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Account psnAccount = new Account(psnName, "https://psnprofiles.com/" + psnName, "Playstation");
+                Account psnAccount = new Account(psnName, "https://psnprofiles.com/" + psnName, "PLAYSTATION");
                 db.accountDao().insert(psnAccount);
                 finish();
             }

@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -33,17 +34,19 @@ public class HomeFragment extends Fragment {
     private AccountViewModel mAccountViewModel;
     private ActionBar toolbar;
 
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.home_screen, container, false);
+        final View view = inflater.inflate(R.layout.home_screen, container, false);
+
 
         db = AccountDatabase.getDatabase(view.getContext());
         super.onCreate(savedInstanceState);
         mAccountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
+        final RecyclerView recyclerView = view.findViewById(R.id.recyclerview);
         final AccountListAdapter adapter = new AccountListAdapter(getContext());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -54,10 +57,11 @@ public class HomeFragment extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter( adapter );
 
+
         mAccountViewModel.getAllAccounts().observe(this, new Observer<List<Account>>() {
             @Override
             public void onChanged(@Nullable final List<Account> accounts) {
-                // Update the cached copy of the words in the adapter.
+                // Update the cached copy of the accounts in the adapter.
                 adapter.setAccounts(accounts);
             }
         });

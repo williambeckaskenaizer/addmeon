@@ -54,11 +54,8 @@ public class NewAccount extends AppCompatActivity {
         steamButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                String accountType = "STEAM";
                 Intent intent = new Intent(NewAccount.this, Steam.class);
                 startActivity(intent);
-//                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
-//                setResult(RESULT_OK, replyIntent);
                 finish();
             }
         });

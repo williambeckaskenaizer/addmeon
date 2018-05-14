@@ -81,9 +81,6 @@ public class Steam extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
-
-
-        //"https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId
         webView.setWebViewClient(new WebViewClient()
         {
             @Override
@@ -103,16 +100,14 @@ public class Steam extends AppCompatActivity {
                 if (Url.getAuthority().equals(REALM_PARAM.toLowerCase())) {
                     Uri userAccountUrl = Uri.parse(Url.getQueryParameter("openid.identity"));
                     userId = userAccountUrl.getLastPathSegment();
-                    String accountType = "Steam";
+                    String accountType = "STEAM";
                     try {
                         URL fuckingURL = new URL("http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/"
                                 + "?key=" + key
                                 + "&steamids=" + userId);
-
                         // Connect to the URL using java's native library
                         HttpURLConnection request = (HttpURLConnection) fuckingURL.openConnection();
                         request.connect();
-
                         // Convert to a JSON object to print data
                         JsonParser jp = new JsonParser(); //from gson
                         InputStreamReader stream = new InputStreamReader((InputStream) request.getContent());
@@ -126,9 +121,6 @@ public class Steam extends AppCompatActivity {
                     } catch (IOException e){
                         throw new RuntimeException(e);
                     }
-
-                    //webView.loadUrl("https://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002?key=BC00C8C079B93F8279D259E567145E07&steamids=" + userId);
-
                 }
         }
         });
