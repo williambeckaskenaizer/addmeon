@@ -65,12 +65,8 @@ public class NewAccount extends AppCompatActivity {
             public void onClick(View view) {
                 String accountType = "Xbox";
                 String accountLink = "";
-                Intent intent = new Intent(NewAccount.this, Steam.class);
+                Intent intent = new Intent(NewAccount.this, XboxLive.class);
                 startActivity(intent);
-                Intent replyIntent = new Intent(NewAccount.this, Steam.class);
-                Account xboxAccount = new Account("Relativity", accountType, accountLink);
-                db.accountDao().insert(xboxAccount);
-                setResult(RESULT_OK, replyIntent);
 
                 finish();
             }

@@ -70,6 +70,9 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             if(current.getAccountType().equals("PLAYSTATION")){
                 holder.accountServiceName.setTextColor(Color.CYAN);
             }
+            if(current.getAccountType().equals("XBOX")){
+                holder.accountServiceName.setTextColor(Color.GREEN);
+            }
 
         } else {
             // Covers the case of data not being ready yet.

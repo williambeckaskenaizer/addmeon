@@ -54,6 +54,7 @@
         <activity android:name=".BattleNet" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".PlaystationNetwork"/>
+        <activity android:name=".XboxLive"/>
 
     </application>
 
