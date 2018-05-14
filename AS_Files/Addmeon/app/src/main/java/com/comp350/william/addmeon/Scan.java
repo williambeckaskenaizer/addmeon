@@ -42,8 +42,8 @@ public class Scan extends AppCompatActivity {
                 finish();
             } else {
                 Log.d("MainActivity", "Scanned");
-                TextView scanResult = (TextView)findViewById(R.id.scanned_text_view_id);
-                scanResult.setText(result.getContents());
+                //TextView scanResult = (TextView)findViewById(R.id.scanned_text_view_id);
+                //scanResult.setText(result.getContents());
                 setContentView(R.layout.scanned_profile);
                 //Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
             }

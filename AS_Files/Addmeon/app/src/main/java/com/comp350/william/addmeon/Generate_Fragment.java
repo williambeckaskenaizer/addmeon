@@ -27,36 +27,40 @@ public class Generate_Fragment extends Fragment {
 
     public Generate_Fragment() {
     }
+
+    final AccountListAdapter adapter = new AccountListAdapter(getContext());
     Button generate_QRCode;
     ImageView qrCode;
     CircleImageView home_qrCode;
     //CircleImageView profile_qrCode;
     EditText mEditText;
-    String urlString = "https://steamcommunity.com/id/reIativity";
+    String encodeString = "";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.generate_scan_fragment, container, false);
-        //generate_QRCode = (Button)view.findViewById(R.id.generate_qr);
         qrCode = (ImageView)view.findViewById(R.id.imageView);
-        //home_qrCode = (CircleImageView)view.findViewById(R.id.home_circleImageView);
-        //profile_qrCode = (CircleImageView)view.findViewById(R.id.profile_circleImageView);
 
-        //mEditText = (EditText)view.findViewById(R.id.editText);
+        getAccountInfo(encodeString);
 
-        //String text=mEditText.getText().toString();
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
-            BitMatrix bitMatrix = multiFormatWriter.encode(urlString, BarcodeFormat.QR_CODE,400,400);
+            BitMatrix bitMatrix = multiFormatWriter.encode(encodeString, BarcodeFormat.QR_CODE,400,400);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
             qrCode.setImageBitmap(bitmap);
-            //home_qrCode.setImageBitmap(bitmap);
-            //profile_qrCode.setImageBitmap(bitmap);
         } catch (WriterException e) {
             e.printStackTrace();
         }
 
         return view;
+    }
+
+    public String getAccountInfo(String encodeString)
+    {
+
+
+        return encodeString;
     }
 }

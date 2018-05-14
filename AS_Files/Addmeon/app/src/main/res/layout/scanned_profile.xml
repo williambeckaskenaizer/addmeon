@@ -3,17 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:design="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraint_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/diagonalsquaresbackground2">
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/circleImageView"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        app:itemTextColor="@color/black"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/navigation" />
+
+    <!--<TextView
+        android:id="@+id/contentView"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        android:layout_weight="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <ImageView
+        android:id="@+id/Logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/cheeto"
+        android:src="@drawable/addmeon_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -28,7 +52,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="tinycheeto123"
+        android:text="Account List"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,11 +64,34 @@
         design:layout_constraintLeft_toLeftOf="parent"
         design:layout_constraintRight_toRightOf="parent" />
 
+    <!--<android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="296dp"
+        android:layout_height="181dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/recyclerview_item" />-->
+
     <TextView
-        android:id="@+id/scanned_text_view_id"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/app_name"
-        android:textColor="@color/white"/>
+        android:id="@+id/scanned_string"
+        android:layout_width="match_parent"
+        android:layout_height="227dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_weight="0.5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.593" />
+
 
 </android.support.constraint.ConstraintLayout>
