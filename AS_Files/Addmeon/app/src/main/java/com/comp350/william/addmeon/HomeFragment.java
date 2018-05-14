@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -66,19 +67,14 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
+
         final ImageButton button = view.findViewById(R.id.addAccountButton);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 addAccountButton();
             }
         });
-
-        /*CircleImageView image = view.findViewById(R.id.circleImageView);
-        image.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                generate_display_qr();
-            }
-        });*/
 
         Button nukeButton = view.findViewById(R.id.nukeAccountListButton);
         nukeButton.setOnClickListener(new View.OnClickListener() {
@@ -95,14 +91,11 @@ public class HomeFragment extends Fragment {
         startActivityForResult(intent, NEW_ACCOUNT_ACTIVITY_REQUEST_CODE);
     }
 
+
+
     public void nukeAccountListButton(){
         db.accountDao().nukeAccountList();
     }
-
-    /*public void generate_display_qr(){
-        Intent INTENT = new Intent(getActivity(), Generate.class);
-        startActivity(INTENT);
-    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState){

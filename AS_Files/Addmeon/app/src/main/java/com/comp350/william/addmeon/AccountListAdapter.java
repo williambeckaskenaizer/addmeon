@@ -9,23 +9,34 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
  * Created by Will on 4/6/2018.
  */
 
-public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.AccountViewHolder> {
+public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.AccountViewHolder> implements View.OnClickListener {
+
+    @Override
+    public void onClick(View view) {
+
+    }
+
 
     class AccountViewHolder extends RecyclerView.ViewHolder {
         protected final TextView accountItemView;
         protected ImageView serviceIcon;
         protected final TextView accountServiceName;
+        protected final TextView accountLink;
 
         private AccountViewHolder(View itemView) {
             super(itemView);
             accountItemView = itemView.findViewById(R.id.title);
             accountServiceName = itemView.findViewById(R.id.year);
+            accountLink = itemView.findViewById(R.id.genre);
+
             //serviceIcon = (ImageView) itemView.findViewById(R.id.itemIcon);
         }
     }
@@ -47,6 +58,9 @@ public class AccountListAdapter extends RecyclerView.Adapter<AccountListAdapter.
             Account current = mAccounts.get(position);
             holder.accountItemView.setText(current.getAccountName());
             holder.accountServiceName.setText(current.getAccountType());
+            holder.accountLink.setText(current.getAccountLink());
+
+
             if(current.getAccountType().equals("BATTLENET")){
                 holder.accountServiceName.setTextColor(Color.parseColor("#3498DB"));
             }

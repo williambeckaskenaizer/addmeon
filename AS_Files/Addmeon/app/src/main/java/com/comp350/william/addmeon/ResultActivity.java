@@ -78,8 +78,8 @@ public class ResultActivity extends AppCompatActivity {
                                 String jsonData = response.body().string();
                                 JSONObject Jobject = new JSONObject(jsonData);
                                 String Jarray = Jobject.getString("battletag");
-                                Log.d("IS THIS THE USERNAME PLEASE?", Jarray);
-                                String accountLink = "http://localhost";
+                                String[] splitJarray = Jarray.split("#");
+                                String accountLink = "https://masteroverwatch.com/profile/pc/global/" + splitJarray[0] + "-" +splitJarray[1];
                                 Account bNetAccount = new Account(Jarray, accountLink, "BATTLENET");
                                 db.accountDao().insert(bNetAccount);
                                 finish();
