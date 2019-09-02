@@ -32,3 +32,7 @@ Tapping Scan/Generate will bring up two buttons, Scan, and Generate. Scan allows
 Generate will create a QR code based on the accounts signed in, and can be interpreted by another user utilizing the scan function.
 
 ![Scan/Generate](https://github.com/williambeckaskenaizer/addmeon/blob/master/images/scan-generate.PNG)
+
+### Settings
+
+As of now, the only available setting is a reset button to nuke the account database, and clear all stored info.
