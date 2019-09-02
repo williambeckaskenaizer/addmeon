@@ -7,13 +7,13 @@ The App aims to simplify the sharing of game platform usernames, such as steam, 
 
 The user starts out with blank home screen, and is given a simple interface. 
 
-![homescreen](https://github.com/williambeckaskenaizer/addmeon/images/capture.png)
+![homescreen](https://github.com/williambeckaskenaizer/addmeon/blob/master/images/capture.png)
 
 ### Adding an account to your list
 
 The user may add an account to their list of sharable accounts by tapping the '+' icon, which brings up the following screen:
 
-![adding account](https://github.com/williambeckaskenaizer/addmeon/images/addaccount.png)
+![adding account](https://github.com/williambeckaskenaizer/addmeon/blob/master/images/addaccount.png)
 
 ### Example
 
@@ -23,7 +23,7 @@ Let's say the user taps the steam icon. They're greeted with the following offic
 
 Once the sign in is completed, the account will appear on the home screen like so
 
-![Steam Home Screen](https://github.com/williambeckaskenaizer/addmeon/images/homescreensteam.png)
+![Steam Home Screen](https://github.com/williambeckaskenaizer/addmeon/blob/master/images/homescreensteam.png)
 
 
 ### Scanning or Generating
@@ -31,4 +31,4 @@ Once the sign in is completed, the account will appear on the home screen like s
 Tapping Scan/Generate will bring up two buttons, Scan, and Generate. Scan allows the user to scan another user's QR code, and add the relevant accounts to their own app.
 Generate will create a QR code based on the accounts signed in, and can be interpreted by another user utilizing the scan function.
 
-![Scan/Generate](https://github.com/williambeckaskenaizer/addmeon/images/scan-generate.png)
+![Scan/Generate](https://github.com/williambeckaskenaizer/addmeon/blob/master/images/scan-generate.png)
