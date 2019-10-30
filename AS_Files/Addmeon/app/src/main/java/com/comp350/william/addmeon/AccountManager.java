@@ -52,7 +52,6 @@ public class AccountManager extends Activity implements AdapterView.OnItemSelect
 
         if(pos == 0){
             //steam
-            /* ADD STEAM SHIT HERE */
             listAdapter.add("Steam");
         }else if(pos == 1){
             //XBL
